@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:context=".RegistroAcademico">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/texto_encabezado_registro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="Registro Académico"
+            android:textColor="@color/txtAzul"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/bgapp"
+            android:layout_width="287dp"
+            android:layout_height="204dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/profesor" />
+
+        <EditText
+            android:id="@+id/nombre_alumno"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="17dp"
+            android:hint="Nombre(s) del Académico" />
+
+        <LinearLayout
+            android:layout_width="316dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp">
+
+            <EditText
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="Ap. Paterno" />
+
+            <EditText
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:hint="Ap. Materno" />
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="319dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:hint="Matrícula/ No. identificación" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-104dp"
+            android:layout_marginTop="40dp"
+            android:text="Contraseña"
+            android:textColor="@color/txtAzul"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="38dp"
+            android:drawablePadding="10dp"
+            android:hint=" * * * * * * *"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btn_aceptar_registro"
+            android:layout_width="261dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/btn_registro_usuario"
+            android:text="Aceptar"
+            android:textColor="@color/txtBlanco" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

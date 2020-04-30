@@ -8,6 +8,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".RegistroAlumno"></activity>
+        <activity android:name=".AlumnoAcademico" />
+        <activity android:name=".RegistroAcademico" />
+        <activity android:name=".Bienvenida" />
+        <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

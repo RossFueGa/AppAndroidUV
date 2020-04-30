@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    tools:context=".AlumnoAcademico">
+    <TextView
+        android:id="@+id/tipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/txtNegro"
+        android:textSize="30dp"
+        android:text="¿Eres...?"/>
+
+    <LinearLayout
+        android:layout_width="302dp"
+        android:layout_height="241dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#6DB188"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="ESTUDIANTE"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/txtBlanco" />
+
+        <Button
+            android:id="@+id/btn_gato_estudiante"
+            android:layout_width="173dp"
+            android:layout_height="163dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/cat_computadora"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="302dp"
+        android:layout_height="252dp"
+        android:layout_marginTop="20dp"
+        android:background="#87A2CF"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="PROFESOR"
+            android:textColor="@color/txtBlanco" />
+
+        <Button
+            android:id="@+id/gato_profesor"
+            android:layout_width="173dp"
+            android:layout_height="163dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/profesor_gato"
+            android:textColor="#fff" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="19dp"
+        android:textColor="@color/txtClaro"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:text="Regresar"/>
+
+</LinearLayout>
