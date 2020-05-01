@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    tools:context=".TiposProyectores">
+    <TextView
+        android:id="@+id/tipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#000"
+        android:textSize="30dp"
+        android:text="Entrada tipo..."/>
+
+    <LinearLayout
+        android:layout_width="266dp"
+        android:layout_height="254dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#362F7520"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="HDMI"
+            android:textColor="#139546" />
+
+        <Button
+            android:id="@+id/btn_gato_estudiante"
+            android:layout_width="173dp"
+            android:layout_height="163dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/hdmi"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="266dp"
+        android:layout_height="254dp"
+        android:layout_marginTop="20dp"
+        android:background="#54213EBA"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="VGA"
+            android:textColor="#2164D5" />
+
+        <Button
+            android:id="@+id/gato_profesor"
+            android:layout_width="173dp"
+            android:layout_height="163dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/vga"
+            android:textColor="#fff" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="19dp"
+        android:textColor="#474040"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:text="Regresar"/>
+
+</LinearLayout>
