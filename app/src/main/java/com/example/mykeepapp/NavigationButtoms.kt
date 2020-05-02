@@ -3,25 +3,41 @@ package com.example.mykeepapp
 import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.activity_navigation_buttoms.*
 
 class NavigationButtoms : AppCompatActivity() {
 
-    private var mNav: BottomNavigationView? = null
-    private var mFrameL: FrameLayout? = null
-    private var fragmentPerfil: FragmentPerfil? = null
-    private var fragmentInicio: FragmentInicio? = null
-    private var fragmentBuscar: FragmentBuscar? = null
+    private val adapter by lazy { ViewAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_buttoms)
-
-        mFrameL = findViewById(R.id.main_frame)
-        mNav = findViewById(R.id.main_nav)
-        fragmentInicio = FragmentInicio()
-        fragmentPerfil= FragmentPerfil()
-        fragmentBuscar=FragmentBuscar()
-
+        pager.adapter = adapter
+        val tabLayoutMediator = TabLayoutMediator(tab_layout, pager,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                when(position){
+                    0 -> {
+                        tab.setIcon(R.drawable.baseline_home_black_24dp)
+                    }
+                    1 -> {
+                        tab.setIcon(R.drawable.baseline_search_black_24dp)
+                    }
+                    2 -> {
+                        tab.setIcon(R.drawable.ic_attachment_black_24dp)
+                    }
+                    3 -> {
+                        tab.setIcon(R.drawable.ic_message_black_24dp)
+                    }
+                    4 -> {
+                        tab.setIcon(R.drawable.baseline_person_outline_black_24dp)
+                    }
+                }
+            })
+        tabLayoutMediator.attach()
     }
 }
+
