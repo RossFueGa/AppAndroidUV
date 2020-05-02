@@ -61,7 +61,7 @@
             android:textColor="#2164D5" />
 
         <Button
-            android:id="@+id/gato_profesor"
+            android:id="@+id/btn_gato_profesor"
             android:layout_width="173dp"
             android:layout_height="163dp"
             android:layout_gravity="center"
