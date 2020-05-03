@@ -25,8 +25,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:text="NADA POR AQUÍ..."
-            android:textColor="#088C3C"
-            android:textSize="22dp"
+            android:textColor="#0D9F46"
+            android:textSize="@dimen/textSizeTitulos"
             android:textStyle="bold" />
 
 
@@ -35,22 +35,11 @@
             android:layout_width="313dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="Cuando tengas equipos apartados aparecerán aquí"
             android:textAlignment="center"
             android:textColor="#0FAA4C"
             android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/regresar"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:textColor="#075C29"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:text="Regresar" />
 
     </LinearLayout>
 </RelativeLayout>

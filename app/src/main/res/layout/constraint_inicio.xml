@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".FragmentDetalleApartado">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="10dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:layout_width="21dp"
-            android:layout_height="21dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:background="@drawable/espalda_verde"
@@ -36,6 +31,7 @@
             android:textColor="@color/txtVerde"
             android:textSize="23sp" />
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/detalle"
@@ -61,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -76,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Matrícula"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -88,8 +84,8 @@
             android:textSize="@dimen/textSizeStandard" />
 
         <View
-            android:layout_width="327dp"
-            android:layout_height="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="1.2dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="15dp"
@@ -101,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Horario"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -116,20 +112,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Materia"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Materia que cursa o imparten"
+            android:text="Materia que cursa o impartn"
             android:textSize="@dimen/textSizeStandard" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
@@ -137,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Aula"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
 
@@ -150,7 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edificio"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -174,7 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Tipo de Equipo"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
 
@@ -185,7 +181,6 @@
             android:text="No. de serie del equipo"
             android:textSize="@dimen/textSizeStandard" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
