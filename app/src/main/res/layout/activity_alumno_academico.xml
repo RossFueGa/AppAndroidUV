@@ -1,83 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
     tools:context=".AlumnoAcademico">
-    <TextView
-        android:id="@+id/tipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/txtNegro"
-        android:textSize="30dp"
-        android:text="¿Eres...?"/>
 
-    <LinearLayout
-        android:layout_width="302dp"
-        android:layout_height="241dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="#6DB188"
-        android:orientation="vertical">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/tipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="ESTUDIANTE"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/txtBlanco" />
+            android:layout_marginTop="52dp"
+            android:text="¿Eres...?"
+            android:textColor="@color/txtNegro"
+            android:textSize="26dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_gato_estudiante"
-            android:layout_width="173dp"
-            android:layout_height="163dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/cat_computadora"
-            android:textColor="#fff" />
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="310dp"
+            android:layout_height="241dp"
+            android:layout_marginTop="40dp"
+            android:background="#6DB188"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tipo"
+            tools:ignore="MissingConstraints">
 
-    <LinearLayout
-        android:layout_width="302dp"
-        android:layout_height="252dp"
-        android:layout_marginTop="20dp"
-        android:background="#87A2CF"
-        android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="ESTUDIANTE"
+                android:textColor="@color/txtBlanco" />
+
+            <Button
+                android:id="@+id/btn_gato_estudiante"
+                android:layout_width="173dp"
+                android:layout_height="163dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/cat_computadora"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="310dp"
+            android:layout_height="241dp"
+            android:layout_marginTop="32dp"
+            android:background="#6DB188"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="PROFESOR"
+                android:textColor="@color/txtBlanco" />
+
+            <Button
+                android:id="@+id/btn_gato_profesor"
+                android:layout_width="173dp"
+                android:layout_height="163dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/profesor_gato"
+                android:textColor="#fff" />
+        </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text="PROFESOR"
-            android:textColor="@color/txtBlanco" />
-
-        <Button
-            android:id="@+id/btn_gato_profesor"
-            android:layout_width="173dp"
-            android:layout_height="163dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/profesor_gato"
-            android:textColor="#fff" />
-    </LinearLayout>
-
-    <TextView
         android:id="@+id/txt_regresar"
-        android:layout_width="wrap_content"
+        android:layout_width="78dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="16dp"
         android:text="Regresar"
         android:textColor="@color/txtClaro"
         android:textSize="19dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+        app:layout_constraintVertical_bias="0.775" />
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

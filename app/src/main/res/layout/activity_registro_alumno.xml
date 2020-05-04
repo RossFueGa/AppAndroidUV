@@ -1,142 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout11"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     tools:context=".RegistroAlumno">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
-        android:layout_gravity="center">
-
-        <TextView
-            android:id="@+id/texto_encabezado_registro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Registro Alumno"
-            android:textColor="@color/txtVerde"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:layout_marginTop="37dp"/>
-
-        <EditText
-            android:id="@+id/nombre_alumno"
-            android:layout_width="312dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="70dp"
-            android:hint="Nombre(s) del Alumno" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_marginTop="30dp"
-            android:layout_width="316dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
 
-            <EditText
-                android:layout_width="137dp"
+            <TextView
+                android:id="@+id/texto_encabezado_registro"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:hint="Ap. Paterno" />
+                android:layout_marginTop="37dp"
+                android:text="Registro Alumno"
+                android:textColor="@color/txtVerde"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="205dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/cat_registro_alumno" />
 
             <EditText
-                android:layout_width="161dp"
+                android:id="@+id/nombre_alumno"
+                android:layout_width="312dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:hint="Ap. Materno" />
-        </LinearLayout>
+                android:layout_marginTop="40dp"
+                android:hint="Nombre(s) del Alumno" />
 
-        <EditText
-            android:layout_width="265dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="30dp"
-            android:hint="Matrícula" />
+            <LinearLayout
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="259dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="30dp"
-            android:hint="Grupo" />
+                <EditText
+                    android:layout_width="137dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:hint="Ap. Paterno" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="32dp"
-            android:orientation="horizontal">
+                <EditText
+                    android:layout_width="161dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:hint="Ap. Materno" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="265dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="24dp"
+                android:hint="Matrícula" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="25dp"
+                android:hint="Grupo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="32dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aula"
+                    android:textSize="17dp" />
+
+                <Spinner
+                    android:id="@+id/spinner_Aula"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edificio"
+                    android:textSize="17dp" />
+
+                <Spinner
+                    android:id="@+id/spinner_Edificio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Aula"
-                android:textSize="17dp" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="-104dp"
+                android:layout_marginTop="35dp"
+                android:text="Contraseña"
+                android:textColor="@color/txtVerde"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/spinner_Aula"
-                android:layout_width="wrap_content"
+            <EditText
+
+                android:layout_width="226dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp" />
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="34dp"
+                android:drawablePadding="10dp"
+                android:hint=" * * * * * * *"
+                android:inputType="textPassword" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_aceptar_registro"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="Edificio"
-                android:textSize="17dp" />
-
-            <Spinner
-                android:id="@+id/spinner_Edificio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp" />
-
+                android:layout_marginBottom="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/btn_registro_alumno"
+                android:text="Aceptar"
+                android:textColor="@color/txtBlanco" />
         </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="-104dp"
-            android:textSize="18dp"
-            android:text="Contraseña"
-            android:textColor="@color/txtVerde"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            />
-
-        <EditText
-
-            android:layout_width="226dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="34dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:drawablePadding="10dp"
-            android:inputType="textPassword"
-            android:hint=" * * * * * * *" />
-
-        <Button
-            android:id="@+id/btn_aceptar_registro"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/btn_registro_alumno"
-            android:text="Aceptar"
-            android:textColor="@color/txtBlanco" />
-
-    </LinearLayout>
 
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

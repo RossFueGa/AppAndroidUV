@@ -1,205 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/txtBlanco"
     android:orientation="vertical"
     tools:context=".FragmentPerfil">
-
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="332dp">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
             android:layout_width="match_parent"
-            android:layout_height="237dp"
-            android:background="@drawable/gradientbackground"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="172dp"
-                android:layout_height="151dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="25dp"
-                android:src="@drawable/cat_profile" />
-
-
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="400dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="190dp">
+            android:layout_height="332dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
 
             <LinearLayout
-                android:layout_width="357dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="237dp"
+                android:background="@drawable/gradientbackground"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="24dp"
-                    android:text="Alonso Escamilla Rocafuerte"
-                    android:textColor="#000"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:layout_width="172dp"
+                    android:layout_height="151dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:text="Estudiante"
-                    android:textColor="#000"
-                    android:textSize="21sp" />
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/cat_profile" />
+
+
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="400dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="190dp">
+
+                <LinearLayout
+                    android:layout_width="357dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="24dp"
+                        android:text="Alonso Escamilla Rocafuerte"
+                        android:textColor="#000"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:text="Estudiante"
+                        android:textColor="#000"
+                        android:textSize="21sp" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="385dp"
-        android:layout_height="275dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="2dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/editar_blanco"
-                android:textColor="#000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="Editar Perfil"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:src="@drawable/proximo"
-                android:textColor="#000" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/menu"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp">
+            android:layout_height="275dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+            tools:ignore="MissingConstraints">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/vga" />
+            <LinearLayout
+                android:id="@+id/editar_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="Obtener Ayuda"
-                android:textColor="#000"
-                android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/editar_blanco"
+                    android:textColor="#000" />
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="175dp"
-                android:src="@drawable/proximo"
-                android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Editar Perfil"
+
+                    android:textColor="#000"
+                    android:textSize="@dimen/textSizeStandard"
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/vga" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Obtener Ayuda"
+                    android:textSize="@dimen/textSizeStandard"
+                    android:textColor="#000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/vga" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Acuerdo e confidencialidad"
+                    android:textSize="@dimen/textSizeStandard"
+                    android:textColor="#000"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/apagar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:paddingLeft="20dp"
+                    android:textSize="@dimen/textSizeStandard"
+                    android:text="Cerrar Sesión"
+                    android:textColor="#000" />
+
+            </LinearLayout>
         </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/vga" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="Acuerdo e confidencialidad"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="90dp"
-                android:src="@drawable/proximo"
-                android:textColor="#000" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/apagar" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:paddingLeft="20dp"
-                android:text="Cerrar Sesión"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="180dp"
-                android:src="@drawable/proximo"
-                android:textColor="#000" />
-        </LinearLayout>
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>
 
 
 

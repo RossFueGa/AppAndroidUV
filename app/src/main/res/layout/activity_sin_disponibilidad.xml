@@ -1,56 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="250dp"
-            android:layout_height="203dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="160dp"
-            android:src="@drawable/icono_espacial"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/nada"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:textColor="#2164D5"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="SIN DISPONIBILIDAD" />
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="203dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="160dp"
+                android:src="@drawable/icono_espacial" />
+
+            <TextView
+                android:id="@+id/nada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:text="SIN DISPONIBILIDAD"
+                android:textColor="#2164D5"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
 
-        <TextView
-            android:id="@+id/nada_mensaje"
-            android:layout_width="303dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:text="Por el momento no hay equipos disponibles, por favor, intenta más tarde"
-            android:textAlignment="center"
-            android:textColor="#2164D5"
-            android:textSize="20dp" />
+            <TextView
+                android:id="@+id/nada_mensaje"
+                android:layout_width="303dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="Por el momento no hay equipos disponibles, por favor, intenta más tarde"
+                android:textAlignment="center"
+                android:textColor="#2164D5"
+                android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/regresar"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:textColor="#2164D5"
-            android:textStyle="bold"
-            android:textSize="17dp"
-            android:text="Regresar" />
+            <TextView
+                android:id="@+id/regresar"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:text="Regresar"
+                android:textColor="#2164D5"
+                android:textSize="17dp"
+                android:layout_marginBottom="45dp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
-</RelativeLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

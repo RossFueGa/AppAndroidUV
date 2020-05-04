@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,151 +7,163 @@
     android:orientation="vertical"
     tools:context=".EditarPerfil">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="237dp">
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="237dp"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="163dp"
+                android:background="@drawable/gradientbackground"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="143dp"
+                    android:layout_height="96dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/cat_profile" />
+
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="397dp"
+                android:layout_height="107dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="130dp">
+
+                <LinearLayout
+                    android:layout_width="387dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="24dp"
+                        android:text="Alonso Escamilla Rocafuerte"
+                        android:textColor="#000"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:text="Estudiante"
+                        android:textColor="#000"
+                        android:textSize="21sp" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="163dp"
-            android:background="@drawable/gradientbackground"
-            android:orientation="vertical">
+            android:layout_height="471dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            tools:ignore="MissingConstraints">
 
-            <ImageView
-                android:layout_width="143dp"
-                android:layout_height="96dp"
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="57dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:layout_marginTop="6dp"
+                android:hint="Nombre"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20dp" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="57dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="-4dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Apellido paterno"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20dp" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="57dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:layout_marginEnd="0dp"
+                android:hint="Apellido paterno"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="57dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:layout_marginEnd="0dp"
+                android:hint="Programa educativo"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20dp" />
+
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="57dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:layout_marginEnd="0dp"
+                android:hint="Matrícula"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/btn_aceptar_apartado"
+                android:layout_width="286dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="25dp"
-                android:src="@drawable/cat_profile" />
-
-
+                android:layout_marginTop="35dp"
+                android:background="@drawable/btn_registro_usuario"
+                android:text="Guardar"
+                android:textColor="#ffffff" />
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="397dp"
-            android:layout_height="107dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="130dp">
-
-            <LinearLayout
-                android:layout_width="387dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="24dp"
-                    android:text="Alonso Escamilla Rocafuerte"
-                    android:textColor="#000"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:text="Estudiante"
-                    android:textColor="#000"
-                    android:textSize="21sp" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="471dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="0dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="57dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="-2dp"
-            android:layout_marginTop="6dp"
-            android:hint="Nombre"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="20dp" />
-
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="57dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="-4dp"
-            android:layout_marginEnd="2dp"
-            android:hint="Apellido paterno"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="20dp" />
-
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="57dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="-2dp"
-            android:layout_marginEnd="0dp"
-            android:hint="Apellido paterno"
-            android:textAlignment="center"
-            android:textSize="20dp" />
-
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="57dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="-2dp"
-            android:layout_marginEnd="0dp"
-            android:hint="Programa educativo"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="20dp" />
-
-
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="57dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="-2dp"
-            android:layout_marginEnd="0dp"
-            android:hint="Matrícula"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="20dp" />
-
-        <Button
-            android:id="@+id/btn_aceptar_apartado"
-            android:layout_width="286dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/btn_registro_usuario"
-            android:text="Guardar"
-            android:textColor="#ffffff" />
-    </LinearLayout>
-
-
-</RelativeLayout>
+</ScrollView>
