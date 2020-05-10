@@ -8,7 +8,64 @@
     <string name="nav_buscar">Buscar</string>
     <string name="titulo_Apartado">Sección de Apartado</string>
 
+    <!--Strings registro Alumno-->
+    <string name="nombreAlumno">Nombre(s) del alumno</string>
+    <string name="apellidoPaterno">Apellido Paterno</string>
+    <string name="apellidoMaterno">Apellido Materno</string>
+    <string name="matriculaAlumno">Matrícula</string>
+    <string name="grupoAlumno">Grupo</string>
+    <string name="aulaAlumno">Aula</string>
+    <string name="edificioAlumno">Edificio</string>
+    <string name="passwordAlumno">Contraseña</string>
+    <!--Strings registro Académico-->
+    <string name="nombreAcademico">Nombre(s) del académico</string>
+    <string name="matriculaAcademico">Matrícula/N° identificación</string>
+
+    <string name="tipoEntrada">¿Tipo de entradaque necesitas?</string>
+
+
+
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Spinner box aula, comienza desde el 0-->
+    <string-array name="aulas_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+
+    <!-- Spinner carrera -->
+    <string-array name="carreras_array">
+        <item>Contaduría</item>
+        <item>Administración</item>
+        <item>Gestión</item>
+        <item>Sistemas</item>
+        <item>Informática</item>
+        <item>Ing. Software</item>
+    </string-array>
+
+    <!-- Spinner edificios-->
+    <string-array name="edificios_array">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 
 </resources>

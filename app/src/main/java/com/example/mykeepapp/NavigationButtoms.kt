@@ -2,12 +2,16 @@ package com.example.mykeepapp
 
 import android.os.Bundle
 import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_navigation_buttoms.*
+import kotlinx.android.synthetic.main.fragment_inicio.*
 
 class NavigationButtoms : AppCompatActivity() {
 
@@ -24,15 +28,12 @@ class NavigationButtoms : AppCompatActivity() {
                         tab.setIcon(R.drawable.baseline_home_black_24dp)
                     }
                     1 -> {
-                        tab.setIcon(R.drawable.baseline_search_black_24dp)
-                    }
-                    2 -> {
                         tab.setIcon(R.drawable.ic_attachment_black_24dp)
                     }
-                    3 -> {
+                    2 -> {
                         tab.setIcon(R.drawable.ic_message_black_24dp)
                     }
-                    4 -> {
+                    3 -> {
                         tab.setIcon(R.drawable.baseline_person_outline_black_24dp)
                     }
                 }

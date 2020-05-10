@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,109 +38,183 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/cat_registro_alumno" />
 
-            <EditText
-                android:id="@+id/nombre_alumno"
-                android:layout_width="312dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="40dp"
-                android:hint="Nombre(s) del Alumno" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/nombreAlumno"
+                app:startIconDrawable="@drawable/ic_person_black_24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNombreAlumno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
-                android:layout_width="316dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp">
-
-                <EditText
-                    android:layout_width="137dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:hint="Ap. Paterno" />
-
-                <EditText
-                    android:layout_width="161dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:hint="Ap. Materno" />
-            </LinearLayout>
-
-            <EditText
-                android:layout_width="265dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="24dp"
-                android:hint="Matrícula" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="259dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="25dp"
-                android:hint="Grupo" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="32dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Aula"
-                    android:textSize="17dp" />
+                    android:hint="@string/apellidoPaterno"
+                    android:layout_weight="1"
+                    app:startIconDrawable="@drawable/ic_person_black_24dp">
 
-                <Spinner
-                    android:id="@+id/spinner_Aula"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtApellidoPaternoAlumno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Edificio"
-                    android:textSize="17dp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <Spinner
-                    android:id="@+id/spinner_Edificio"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp" />
+                    android:hint="@string/apellidoMaterno"
+                    android:layout_weight="1"
+                    app:startIconDrawable="@drawable/ic_person_black_24dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtApellidoMaternoAlumno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtMatriculaLabel"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="-104dp"
-                android:layout_marginTop="35dp"
-                android:text="Contraseña"
-                android:textColor="@color/txtVerde"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:hint="@string/matriculaAlumno"
+                app:startIconDrawable="@drawable/ic_casino_black_24dp">
 
-            <EditText
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtMatriculaAlumno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="9"/>
 
-                android:layout_width="226dp"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="34dp"
-                android:drawablePadding="10dp"
-                android:hint=" * * * * * * *"
-                android:inputType="textPassword" />
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10sp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Carrera"
+                    android:textSize="17sp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_group_work_black_24dp"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinnerCarrera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/grupoAlumno"
+                app:startIconDrawable="@drawable/ic_group_black_24dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtGrupoAlumno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="10sp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aula"
+                        android:textSize="17sp"
+                        android:drawableLeft="@drawable/ic_meeting_room_black_24dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinnerAulaAlumno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Edificio"
+                            android:textSize="17sp"
+                            android:drawableLeft="@drawable/ic_meeting_room_black_24dp"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_Edificio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp" />
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/passwordAlumno"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/ic_lock_24px">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passAlumno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLength="8"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
 
             <Button
-                android:id="@+id/btn_aceptar_registro"
+                android:id="@+id/btnAceptarRegistro"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="45dp"

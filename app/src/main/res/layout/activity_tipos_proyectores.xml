@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="56dp"
-            android:text="Entrada tipo..."
+            android:text="@string/tipoEntrada"
             android:textColor="#000"
             android:textSize="24dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
                 android:textColor="#139546" />
 
             <Button
-                android:id="@+id/btn_gato_estudiante"
+                android:id="@+id/btnTipoHDMI"
                 android:layout_width="173dp"
                 android:layout_height="163dp"
                 android:layout_gravity="center"
@@ -82,7 +82,7 @@
                 android:textColor="#2164D5" />
 
             <Button
-                android:id="@+id/btn_gato_profesor"
+                android:id="@+id/btnTipoVGA"
                 android:layout_width="173dp"
                 android:layout_height="163dp"
                 android:layout_gravity="center"

@@ -17,16 +17,15 @@ class ViewAdapter(fa: FragmentActivity ) : FragmentStateAdapter(fa) {
     /*
     * Cantidad de fragments a mostrar
     * */
-    override fun getItemCount(): Int  = 5
+    override fun getItemCount(): Int  = 4
 
     override fun createFragment(position: Int): Fragment {
         var fra = Fragment()
         when(position){
             0->{fra = FragmentInicio()}
-            1->{fra = FragmentBuscar()}
-            2->{fra = FragmentDetalleApartado()}
-            3->{fra = FragmentSinMensajes()}
-            4->{fra = FragmentPerfil()}
+            1->{fra = FragmentDetalleApartado()}
+            2->{fra = FragmentSinMensajes()}
+            3->{fra = FragmentPerfil()}
             }
             return fra
         }

@@ -16,24 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditarPerfil"/>
-        <activity android:name=".FormularioApartado"/>
 
-        <activity android:name=".TiposProyectores">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-
-        <activity android:name=".SinDisponibilidad">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
 
         <activity android:name=".NavigationButtoms"/>
         <activity android:name=".RegistroAlumno" />
@@ -41,6 +24,10 @@
         <activity android:name=".RegistroAcademico" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity"/>
+        <activity android:name=".EditarPerfil"/>
+        <activity android:name=".FormularioApartado"/>
+        <activity android:name=".TiposProyectores"/>
+        <activity android:name=".SinDisponibilidad"/>
     </application>
 
 </manifest>

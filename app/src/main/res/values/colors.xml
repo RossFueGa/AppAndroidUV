@@ -14,6 +14,10 @@
     <color name="colorProfile">#96A6CF</color>
     <color name="colorHome">#7CA579</color>
     <color name="colorSearch">#96A6CF</color>
+    <color name="colorError">#FF3B3B</color>
+
+
+
 
 
 </resources>

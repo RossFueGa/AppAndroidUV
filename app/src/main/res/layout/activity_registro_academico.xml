@@ -10,14 +10,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="0dp"
         android:orientation="vertical">
 
         <TextView
@@ -39,65 +38,95 @@
             android:scaleType="fitXY"
             android:src="@drawable/profesor" />
 
-        <EditText
-            android:id="@+id/nombre_alumno"
-            android:layout_width="312dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="17dp"
-            android:hint="Nombre(s) del Académico" />
+            android:hint="@string/nombreAcademico"
+            app:startIconDrawable="@drawable/ic_person_black_24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtNombreAcademico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <LinearLayout
-            android:layout_width="316dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp">
 
-            <EditText
-                android:layout_width="137dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:hint="Ap. Paterno" />
+                android:hint="@string/apellidoPaterno"
+                android:layout_weight="1"
+                app:startIconDrawable="@drawable/ic_person_black_24dp">
 
-            <EditText
-                android:layout_width="161dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtApellidoPaternoAcademico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:hint="Ap. Materno" />
+                android:hint="@string/apellidoMaterno"
+                android:layout_weight="1"
+                app:startIconDrawable="@drawable/ic_person_black_24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtApellidoMaternoAcademico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
         </LinearLayout>
 
-        <EditText
-            android:layout_width="319dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtMatriculaLabel"
             android:layout_marginTop="30dp"
-            android:hint="Matrícula/ No. identificación" />
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="-104dp"
-            android:layout_marginTop="40dp"
-            android:text="Contraseña"
-            android:textColor="@color/txtAzul"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:hint="@string/matriculaAcademico"
+            app:startIconDrawable="@drawable/ic_casino_black_24dp">
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtMatriculaAcademico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="9"/>
 
-            android:layout_width="226dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="38dp"
-            android:drawablePadding="10dp"
-            android:hint=" * * * * * * *"
-            android:inputType="textPassword" />
+            android:hint="@string/passwordAlumno"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/ic_lock_24px">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passAcademico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:maxLength="8"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_aceptar_registro"
+            android:id="@+id/btnAceptarRegistroAcademico"
             android:layout_width="261dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -108,6 +137,7 @@
             android:textColor="@color/txtBlanco" />
 
     </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

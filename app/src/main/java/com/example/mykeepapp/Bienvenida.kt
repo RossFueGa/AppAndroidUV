@@ -7,12 +7,13 @@ import kotlinx.android.synthetic.main.activity_bienvenida.*
 
 class Bienvenida : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bienvenida)
 
         btn_inicio_sesion.setOnClickListener {
-            val intent = Intent(this,NavigationButtoms::class.java)
+            val intent = Intent(this,Login::class.java)
             startActivity(intent)
         }
 
