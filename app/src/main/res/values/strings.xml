@@ -7,6 +7,37 @@
     <string name="nav_perfil">Perfil</string>
     <string name="nav_buscar">Buscar</string>
     <string name="titulo_Apartado">Sección de Apartado</string>
+    <string name="txt_cerrar"> ¿Quieres cerrar la sesión? </string>
+    <string name="txt_cerrar_sesion"> Puedes volver a iniciar sesión en cualquier momento </string>
+    <string name="txt_sad">Vuelve pronto...</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="confirmar_cerrar">Cerrar sesión</string>
+    <string name="txt_politica">Política de privacidad</string>
+
+    <string name="txt_politica_intro">Creemos que debe conocer en todo momento qué datos de usted recopilamos y cómo los utilizamos.
+    Queremos que esté informado para que tome las desiciones más adecuadas sobre la información que nos comparte.
+    </string>
+    <string name="txt_finalidad">Por ello se presenta la política de privacidad </string>
+    <string name="p_uno">Los perfiles creados en la aplicación de My Keep, no son de carácter público y la información no se comparte con usuarios como alumnos,
+    académicos, personal administrativo, con excepción de personar técico audiovisual y encargados directos con esta área, así como el equipo de soporte técnico.</string>
+    <string name="p_dos">Es necesario que los usuarios utilicen la aplicación bajo sus nombres de carácter legal. Las cuentas bajo seudóminos pueden ser dadas de baja
+    al momento de solicitar préstamos, ya que el personal audiovisual hace una validación de información al momento de entregar equipo solicitado.</string>
+    <string name="p_tres">Cuando usted crea una cuenta tipo académico o alumno, usted está proporcionando información académica confidencial</string>
+    <string name="p_cuatro">Le damos control de su cuenta para que pueda configurar su perfil en perfil > Editar perfil, y así proporcionar
+    información actualizada cuando usted la necesite</string>
+    <string name="info">Información que comparte con nosotros</string>
+
+    <string name="txt_basico_cuenta">Restricciones a terceros</string>
+    <string name="txt_basico_uno">Usted necesita crear una cuenta para acceder a las caracterísiticas completas de la aplicación como,
+    reservar equipo audiovisual exclusivo de la Universidad Veracruzana facultad de Negocios y Tecnologías campus Ixtaczoquitlán</string>
+    <string name="txt_matricula">Se reserva el derecho de préstamos únicamente a personal académico y alumnado de la facultad de
+    negocios y tecnologías campus Ixtaczoquitlán</string>
+    
+    <string name="inf_revelada">Información que compartimos y revelamos</string>
+    <string name="inf_revelada_uno">My Keep está diseñado para poder compartir información que necesita el proceso de apartado de equipo en el área Audiovisual.
+    En situación limitada en la que se revelan sus datos personales privados, se hace bajo su control, porque es necesario para administrar un proceso interno de la
+        universidad
+    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
