@@ -1,6 +1,5 @@
 package com.example.mykeepapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,11 +7,10 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mykeepapp.HTTPBodyPojos.Usuario
 import com.example.mykeepapp.IAPIRequest.IHostApiService
-import com.example.mykeepapp.R.id.spinnerCarrera
-import com.example.mykeepapp.R.id.spinner_Edificio
-import kotlinx.android.synthetic.main.activity_login.*
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_registro_alumno.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,14 +19,20 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
+    var gson = GsonBuilder()
+        .setLenient()
+        .create()
 
     val retrofit = Retrofit.Builder().addCallAdapterFactory(
         RxJava2CallAdapterFactory.create())
         .addConverterFactory(
-            GsonConverterFactory.create())
+            GsonConverterFactory.create(gson))
         .baseUrl("http://35.222.188.8:8080/ApiRestMiUV-V0.0.1/webresources/")
         .build();
+
     var retrofitobj = retrofit.create(IHostApiService::class.java)
 
 
@@ -45,13 +49,47 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 && checkMatricula(txtMatriculaAlumno.text.toString())
                 && checkPassword(passAlumno.text.toString())){
 
-                Toast.makeText(this,spinnerAulaAlumno.selectedItemPosition.toString(), Toast.LENGTH_LONG).show()
+                insertOne()
+
             }
 
 
 
         }
     }
+
+    fun insertOne(){
+        val usuarioId = "2"
+        var user = Usuario()
+        user.matricula = txtMatriculaAlumno.text.toString()
+        user.idTipoUsuario = usuarioId
+        user.idCarrera = (spinnerCarrera.selectedItemPosition + 1).toString()
+        user.nombre = txtNombreAlumno.text.toString()
+        user.apellidoPaterno = txtApellidoPaternoAlumno.text.toString()
+        user.apellidoMaterno = txtApellidoMaternoAlumno.text.toString()
+        user.contrasena = passAlumno.text.toString()
+
+        retrofitobj.insertUsuario(user).enqueue(
+            object : Callback<String>{
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Toast.makeText(this@RegistroAlumno, "ERROR", Toast.LENGTH_LONG).show()
+                    Log.d("ERROR", t.message)
+
+                }
+
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if(response.isSuccessful()){
+                        Toast.makeText(this@RegistroAlumno, "Added", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        )
+
+
+
+    }
+
+
 
 
     fun  checkMatricula (matricula : String) : Boolean {
@@ -121,43 +159,6 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         return isValid;
     }
 
-    fun loadSpinner(){
-        val spinner: Spinner = findViewById(R.id.spinnerAulaAlumno)
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.aulas_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinner.adapter = adapter
-        }
-
-        val spinner2 : Spinner = findViewById(R.id.spinner_Edificio)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.edificios_array,
-            android.R.layout.simple_spinner_item
-        ).also{adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinner2.adapter = adapter
-        }
-
-        val spinner3 : Spinner = findViewById(R.id.spinnerCarrera)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.carreras_array,
-            android.R.layout.simple_spinner_item
-        ).also{adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinner3.adapter = adapter
-        }
-
-    }
 
     fun checkName(nombre : String) : Boolean{
         var isValid : Boolean = true;
@@ -268,15 +269,60 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val spinner: Spinner = findViewById(R.id.spinnerAulaAlumno)
-        spinner.onItemSelectedListener = this
 
-        val spinner1: Spinner = findViewById(R.id.spinner_Edificio)
-        spinner1.onItemSelectedListener = this
+    fun loadSpinner(){
+        val spinnerCarrera : Spinner = findViewById(R.id.spinnerCarrera)
+          ArrayAdapter.createFromResource(
+              this,
+              R.array.carreras_array,
+              android.R.layout.simple_spinner_item
+          ).also{adapter ->
+              adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+              // Apply the adapter to the spinner
+              spinnerCarrera.adapter = adapter
+          }
 
-        val spinner3: Spinner = findViewById(R.id.spinnerCarrera)
-        spinner3.onItemSelectedListener = this
+
+          val spinnerAula: Spinner = findViewById(R.id.spinnerAulaAlumno)
+          // Create an ArrayAdapter using the string array and a default spinner layout
+          ArrayAdapter.createFromResource(
+              this,
+              R.array.aulas_array,
+              android.R.layout.simple_spinner_item
+          ).also { adapter ->
+              // Specify the layout to use when the list of choices appears
+              adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+              // Apply the adapter to the spinner
+              spinnerAula.adapter = adapter
+          }
+
+        val spinnerEdificio: Spinner = findViewById(R.id.spinnerEdificioAlumno)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.edificios_array,
+            android.R.layout.simple_spinner_item
+        ).also{adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerEdificio.adapter = adapter
+        }
+
+
+
     }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val spinnerAula: Spinner = findViewById(R.id.spinnerAulaAlumno)
+        spinnerAula.onItemSelectedListener = this
+
+
+        val spinnerCarrera: Spinner = findViewById(R.id.spinnerCarrera)
+        spinnerCarrera.onItemSelectedListener = this
+
+        val spinnerEdificio: Spinner = findViewById(R.id.spinnerEdificioAlumno)
+        spinnerEdificio.onItemSelectedListener = this
+    }
+
+
 
 }

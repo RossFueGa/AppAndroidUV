@@ -2,10 +2,33 @@ package com.example.mykeepapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import com.example.mykeepapp.HTTPBodyPojos.Usuario
+import com.example.mykeepapp.IAPIRequest.IHostApiService
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_registro_academico.*
+import kotlinx.android.synthetic.main.activity_registro_alumno.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 class RegistroAcademico : AppCompatActivity() {
+    var gson = GsonBuilder()
+        .setLenient()
+        .create()
+
+    val retrofit = Retrofit.Builder().addCallAdapterFactory(
+        RxJava2CallAdapterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create(gson))
+        .baseUrl("http://35.222.188.8:8080/ApiRestMiUV-V0.0.1/webresources/")
+        .build();
+
+    var retrofitobj = retrofit.create(IHostApiService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,12 +40,45 @@ class RegistroAcademico : AppCompatActivity() {
                && checkLastName2((txtApellidoMaternoAcademico.text.toString()))
                && checkMatricula(txtMatriculaAcademico.text.toString())
                && checkPassword(passAcademico.text.toString())){
-                Toast.makeText(this, "WELCOME BB", Toast.LENGTH_LONG).show()
+
+                insertOne()
+
             }else{
                 Toast.makeText(this, "Error en registro", Toast.LENGTH_LONG).show()
             }
         }
     }
+
+    fun insertOne(){
+        val usuarioId = "1"
+        var user = Usuario()
+        user.matricula = txtMatriculaAcademico.text.toString()
+        user.idTipoUsuario = usuarioId
+        user.idCarrera = "1"
+        user.nombre = txtNombreAcademico.text.toString()
+        user.apellidoPaterno = txtApellidoPaternoAcademico.text.toString()
+        user.apellidoMaterno = txtApellidoMaternoAcademico.text.toString()
+        user.contrasena = passAcademico.text.toString()
+
+        retrofitobj.insertUsuario(user).enqueue(
+            object : Callback<String> {
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Toast.makeText(this@RegistroAcademico, "ERROR", Toast.LENGTH_LONG).show()
+                }
+
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if(response.isSuccessful()){
+                        Toast.makeText(this@RegistroAcademico, "Added", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        )
+
+
+
+    }
+
+
 
     fun  checkMatricula (matricula : String) : Boolean {
         var flag : Boolean = true;
@@ -90,8 +146,6 @@ class RegistroAcademico : AppCompatActivity() {
 
         return isValid;
     }
-
-
 
     fun checkName(nombre : String) : Boolean{
         var isValid : Boolean = true;

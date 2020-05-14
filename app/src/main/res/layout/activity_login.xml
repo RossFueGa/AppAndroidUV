@@ -47,7 +47,7 @@
             android:src="@drawable/img_welcome" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtMatriculaLabel"
+            android:id="@+id/txtMatriculaLogin"
             android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="40dp"
