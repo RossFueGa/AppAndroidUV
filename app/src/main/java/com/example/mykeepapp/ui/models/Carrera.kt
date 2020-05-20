@@ -1,4 +1,4 @@
-package com.example.mykeepapp.HTTPBodyPojos
+package com.example.mykeepapp.ui.models
 
 class Carrera {
     private val idCarrera: String? = null

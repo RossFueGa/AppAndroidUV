@@ -1,8 +1,9 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mykeepapp.R
 import kotlinx.android.synthetic.main.activity_tipos_proyectores.*
 
 class TiposProyectores : AppCompatActivity() {
@@ -12,12 +13,14 @@ class TiposProyectores : AppCompatActivity() {
         setContentView(R.layout.activity_tipos_proyectores)
 
         btnTipoHDMI.setOnClickListener {
-            val intent = Intent(this,FormularioApartado::class.java)
+            val intent = Intent(this,
+                FormularioApartado::class.java)
             startActivity(intent)
         }
 
         btnTipoVGA.setOnClickListener {
-            val intent = Intent(this,FormularioApartado::class.java)
+            val intent = Intent(this,
+                FormularioApartado::class.java)
             startActivity(intent)
         }
 

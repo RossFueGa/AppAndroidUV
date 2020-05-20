@@ -1,12 +1,12 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mykeepapp.R
 import kotlinx.android.synthetic.main.activity_alumno_academico.*
 import kotlinx.android.synthetic.main.activity_alumno_academico.btn_gato_estudiante
 import kotlinx.android.synthetic.main.activity_alumno_academico.btn_gato_profesor
-import kotlinx.android.synthetic.main.activity_tipos_proyectores.*
 
 class AlumnoAcademico : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class AlumnoAcademico : AppCompatActivity() {
         setContentView(R.layout.activity_alumno_academico)
 
         btn_gato_estudiante.setOnClickListener {
-            val intent = Intent(this,RegistroAlumno::class.java)
+            val intent = Intent(this, RegistroAlumno::class.java)
             startActivity(intent)
         }
 

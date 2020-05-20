@@ -1,13 +1,12 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
-import android.content.Context
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import kotlinx.android.synthetic.main.activity_alumno_academico.*
+import com.example.mykeepapp.ui.FragmentDetalleApartado
+import com.example.mykeepapp.ui.FragmentInicio
+import com.example.mykeepapp.ui.FragmentPerfil
+import com.example.mykeepapp.ui.FragmentSinMensajes
 
 class ViewAdapter(fa: FragmentActivity ) : FragmentStateAdapter(fa) {
     //Variable de vlase
@@ -22,10 +21,14 @@ class ViewAdapter(fa: FragmentActivity ) : FragmentStateAdapter(fa) {
     override fun createFragment(position: Int): Fragment {
         var fra = Fragment()
         when(position){
-            0->{fra = FragmentInicio()}
-            1->{fra = FragmentDetalleApartado()}
-            2->{fra = FragmentSinMensajes()}
-            3->{fra = FragmentPerfil()}
+            0->{fra = FragmentInicio()
+            }
+            1->{fra = FragmentDetalleApartado()
+            }
+            2->{fra = FragmentSinMensajes()
+            }
+            3->{fra = FragmentPerfil()
+            }
             }
             return fra
         }

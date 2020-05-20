@@ -1,52 +1,44 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.mykeepapp.HTTPBodyPojos.Usuario
-import com.example.mykeepapp.HTTPPojosResponse.ResponseUsuario
-import com.example.mykeepapp.IAPIRequest.IHostApiService
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.example.mykeepapp.ui.models.Usuario
+import com.example.mykeepapp.R
+import com.example.mykeepapp.data.data.Api.ApiService
+import com.example.mykeepapp.viewmodel.MyViewModel
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_registro_academico.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.Result
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Login : AppCompatActivity() {
 
-    var gson = GsonBuilder()
-        .setLenient()
-        .create()
+    private lateinit var  viewModel : MyViewModel
 
-    val retrofit = Retrofit.Builder().addCallAdapterFactory(
-        RxJava2CallAdapterFactory.create())
-        .addConverterFactory(
-            GsonConverterFactory.create(gson))
-        .baseUrl("http://35.222.188.8:8080/ApiRestMiUV-V0.0.1/webresources/")
-        .build();
 
-    var retrofitobj = retrofit.create(IHostApiService::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         aceptar_login.setOnClickListener {
-
             if (checkMatricula(txtMatriculaAlumnoLogin.text.toString())
                 && checkPassword(passAlumnoLogin.text.toString()) ) {
-                Toast.makeText(this@Login,"Validando...", Toast.LENGTH_LONG).show()
 
-                validateLogin(
+                setUpModel(
                     txtMatriculaAlumnoLogin.text.toString(),
                     passAlumnoLogin.text.toString())
 
-            } else { }
+            } else {
+
+            }
 
         }
 
@@ -121,30 +113,25 @@ class Login : AppCompatActivity() {
         return isValid;
     }
 
-    fun validateLogin(matricula : String, pass : String) {
-        retrofitobj.getUsuarioById(matricula).enqueue(
-            object : Callback<ResponseUsuario>{
-                override fun onFailure(call: Call<ResponseUsuario>, t: Throwable) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    fun setUpModel(matricula : String, pass : String){
+        viewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
+
+        val usuarioObserver = Observer<List<Usuario>>{
+            for (user in it){
+                if (user.matricula.equals(matricula) && user.contrasena.equals(pass)){
+                    Toast.makeText(this, "Bienvedido ${user.nombre}", Toast.LENGTH_LONG).show()
+
+                    break;
+                }else{
+                    Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_LONG).show()
                 }
+            }
+        }
 
-                override fun onResponse(
-                    call: Call<ResponseUsuario>,
-                    response: Response<ResponseUsuario>){
-                    if(response.body()?.contrasena.equals(pass)){
-                        val intent = Intent(this@Login,NavigationButtoms::class.java)
-                        startActivity(intent)
-                        Toast.makeText(this@Login, "Bienvenido ${response.body()?.nombre}" , Toast.LENGTH_LONG).show()
-                    }else{
-                        Toast.makeText(this@Login, "No existes" , Toast.LENGTH_LONG).show()
-                    }
-
-
-                    }
-                }
-        )
+        viewModel.getDataUserLive().observe(this, usuarioObserver)
 
     }
+
 
 
 }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
-    tools:context=".AlumnoAcademico">
+    tools:context=".ui.AlumnoAcademico">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

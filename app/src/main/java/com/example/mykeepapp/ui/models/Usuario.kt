@@ -1,6 +1,6 @@
-package com.example.mykeepapp.HTTPBodyPojos
+package com.example.mykeepapp.ui.models
 
-class Usuario {
+class Usuario()  {
     var  matricula : String = "";
     var idTipoUsuario : String = "";
     var idCarrera : String = "";
@@ -9,3 +9,4 @@ class Usuario {
     var apellidoMaterno : String = "";
     var contrasena : String = "";
 }
+

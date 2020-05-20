@@ -1,12 +1,15 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mykeepapp.R
 
-class SinDisponibilidad : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sin_disponibilidad)
+        setContentView(R.layout.activity_main)
     }
+
+
 }

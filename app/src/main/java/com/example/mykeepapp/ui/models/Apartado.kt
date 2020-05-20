@@ -1,4 +1,4 @@
-package com.example.mykeepapp.HTTPBodyPojos
+package com.example.mykeepapp.ui.models
 
 class Apartado {
     private val idApartado = 0

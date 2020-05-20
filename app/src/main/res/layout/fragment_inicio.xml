@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:background="@color/txtBlanco"
-    tools:context=".FragmentInicio">
+    tools:context=".ui.FragmentInicio">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mykeepapp">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,24 +11,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Bienvenida" >
+
+                <activity android:name=".ui.Bienvenida">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".NavigationButtoms"/>
-        <activity android:name=".RegistroAlumno" />
-        <activity android:name=".AlumnoAcademico" />
-        <activity android:name=".RegistroAcademico" />
-        <activity android:name=".Login" />
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".EditarPerfil"/>
-        <activity android:name=".FormularioApartado"/>
-        <activity android:name=".TiposProyectores"/>
-        <activity android:name=".SinDisponibilidad"/>
+        <activity android:name=".ui.NavigationButtoms" />
+        <activity android:name=".ui.RegistroAlumno" />
+        <activity android:name=".ui.AlumnoAcademico" />
+        <activity android:name=".ui.RegistroAcademico" />
+        <activity android:name=".ui.Login" />
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.EditarPerfil" />
+        <activity android:name=".ui.FormularioApartado" />
+        <activity android:name=".ui.TiposProyectores" />
+        <activity android:name=".ui.SinDisponibilidad" />
     </application>
 
 </manifest>

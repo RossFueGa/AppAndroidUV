@@ -1,4 +1,4 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +8,9 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mykeepapp.HTTPBodyPojos.Usuario
-import com.example.mykeepapp.IAPIRequest.IHostApiService
+import com.example.mykeepapp.R
+import com.example.mykeepapp.ui.models.Usuario
+import com.example.mykeepapp.data.data.Api.ApiService
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_registro_alumno.*
 import retrofit2.Call
@@ -33,7 +34,7 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         .baseUrl("http://35.222.188.8:8080/ApiRestMiUV-V0.0.1/webresources/")
         .build();
 
-    var retrofitobj = retrofit.create(IHostApiService::class.java)
+    var retrofitobj = retrofit.create(ApiService::class.java)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,17 +1,10 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
 import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.tabs.TabLayout
+import com.example.mykeepapp.R
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_navigation_buttoms.*
-import kotlinx.android.synthetic.main.fragment_inicio.*
 
 class NavigationButtoms : AppCompatActivity() {
 

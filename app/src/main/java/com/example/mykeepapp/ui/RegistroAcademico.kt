@@ -1,14 +1,13 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import com.example.mykeepapp.HTTPBodyPojos.Usuario
-import com.example.mykeepapp.IAPIRequest.IHostApiService
+import com.example.mykeepapp.R
+import com.example.mykeepapp.ui.models.Usuario
+import com.example.mykeepapp.data.data.Api.ApiService
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_registro_academico.*
-import kotlinx.android.synthetic.main.activity_registro_alumno.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +27,7 @@ class RegistroAcademico : AppCompatActivity() {
         .baseUrl("http://35.222.188.8:8080/ApiRestMiUV-V0.0.1/webresources/")
         .build();
 
-    var retrofitobj = retrofit.create(IHostApiService::class.java)
+    var retrofitobj = retrofit.create(ApiService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

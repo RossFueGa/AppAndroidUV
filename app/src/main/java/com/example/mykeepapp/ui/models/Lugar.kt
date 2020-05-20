@@ -1,4 +1,4 @@
-package com.example.mykeepapp.HTTPBodyPojos
+package com.example.mykeepapp.ui.models
 
 class Lugar {
     private val idLugar: String? = null
