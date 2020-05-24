@@ -90,9 +90,6 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     }
 
-
-
-
     fun  checkMatricula (matricula : String) : Boolean {
         var flag : Boolean = true;
         var numeros : Int = 0
@@ -159,7 +156,6 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         return isValid;
     }
-
 
     fun checkName(nombre : String) : Boolean{
         var isValid : Boolean = true;

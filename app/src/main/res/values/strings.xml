@@ -21,7 +21,11 @@
     <string name="nombreAcademico">Nombre(s) del académico</string>
     <string name="matriculaAcademico">Matrícula/N° identificación</string>
 
-    <string name="tipoEntrada">¿Tipo de entradaque necesitas?</string>
+    <string name="tipoEntrada">¿Tipo de entrada que necesitas?</string>
+
+
+    <!--Strings Formulario apartado-->
+    <string name="grupoFormularioApartado">Grupo donde estará el equipo</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

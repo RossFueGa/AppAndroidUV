@@ -1,5 +1,6 @@
 package com.example.mykeepapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -33,8 +34,12 @@ class Login : AppCompatActivity() {
                 && checkPassword(passAlumnoLogin.text.toString()) ) {
 
                 setUpModel(
-                    txtMatriculaAlumnoLogin.text.toString(),
+                    txtMatriculaAlumnoLogin.text.toString().toUpperCase(),
                     passAlumnoLogin.text.toString())
+
+                val intent = Intent(this, NavigationButtoms::class.java)
+                startActivity(intent)
+                finish()
 
             } else {
 
