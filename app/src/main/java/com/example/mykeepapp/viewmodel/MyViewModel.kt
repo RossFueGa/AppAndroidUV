@@ -14,4 +14,8 @@ class MyViewModel:  ViewModel(){
         return userRepo.getUsuarios()
     }
 
+    fun getDataOneUserLive(matricula : String): LiveData<Usuario>{
+        return userRepo.getUsuario(matricula)
+    }
+
 }

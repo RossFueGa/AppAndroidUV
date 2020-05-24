@@ -17,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class UsuariosDataSet {
 
     val myUsuarios = MutableLiveData<List<Usuario>>()
+    val myUser = MutableLiveData<Usuario>()
 
 
     var gson = GsonBuilder()
@@ -53,6 +54,25 @@ class UsuariosDataSet {
             }
         )
         return myUsuarios
+    }
+
+    fun getUsuario(matricula : String) : LiveData<Usuario>{
+        retrofitobj.getUsuarioById(matricula).enqueue(
+            object  : Callback<Usuario>{
+                override fun onFailure(call: Call<Usuario>, t: Throwable) {
+                    Log.d("response data:", "error data....")
+                    Log.e(ContentValues.TAG,t.toString());
+                }
+
+                override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+                    if (response.isSuccessful){
+                        Log.d("response data:", "getting data....")
+                        myUser.value = response.body()
+                    }
+                }
+            }
+        )
+        return  myUser;
     }
 
 

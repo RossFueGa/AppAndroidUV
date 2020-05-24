@@ -99,7 +99,6 @@ class Login : AppCompatActivity() {
             if (password.length in 8..11) {
                 var myChar = password.toCharArray()
                 for (pos in myChar.indices) {
-                    println(myChar.get(pos))
 
                     if (myChar.get(pos) == ' ') {
                         isValid = false;
@@ -121,7 +120,7 @@ class Login : AppCompatActivity() {
     fun setUpModel(matricula : String, pass : String){
         viewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
 
-        val usuarioObserver = Observer<List<Usuario>>{
+ /*       val usuarioObserver = Observer<List<Usuario>>{
             for (user in it){
                 if (user.matricula.equals(matricula) && user.contrasena.equals(pass)){
                     Toast.makeText(this, "Bienvedido ${user.nombre}", Toast.LENGTH_LONG).show()
@@ -132,8 +131,15 @@ class Login : AppCompatActivity() {
                 }
             }
         }
-
-        viewModel.getDataUserLive().observe(this, usuarioObserver)
+*/
+        val usuarioOberver = Observer<Usuario> {
+            if(it.matricula.equals(matricula) && it.contrasena.equals(pass)){
+                Toast.makeText(this, "Bienvedido ${it.nombre}", Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_LONG).show()
+            }
+        }
+        viewModel.getDataOneUserLive(matricula).observe(this, usuarioOberver)
 
     }
 
