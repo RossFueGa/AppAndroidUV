@@ -16,8 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class UsuariosDataSet {
 
-    val myUsuarios = MutableLiveData<List<Usuario>>()
-    val myUser = MutableLiveData<Usuario>()
+    val actualUser = MutableLiveData<Usuario>()
 
 
     var gson = GsonBuilder()
@@ -33,48 +32,29 @@ class UsuariosDataSet {
 
     var retrofitobj = retrofit.create(ApiService::class.java)
 
-    fun getUsuarios() : LiveData<List<Usuario>> {
-        retrofitobj.getUsuariosRecords().enqueue(
-            object : Callback<List<Usuario>> {
-                override fun onFailure(call: Call<List<Usuario>>, t: Throwable) {
-                    Log.d("response data:", "getting data....")
-                    Log.e(ContentValues.TAG,t.toString());
-                }
 
-                override fun onResponse(
-                    call: Call<List<Usuario>>,
-                    response: Response<List<Usuario>>
-                ) {
-                    if (response.isSuccessful){
-                        Log.d("response data:", "getting data....")
-                        myUsuarios.value = response.body()!!
-                    }
-                }
-
-            }
-        )
-        return myUsuarios
-    }
-
-    fun getUsuario(matricula : String) : LiveData<Usuario>{
+    fun getUserById(matricula : String) : LiveData<Usuario>{
         retrofitobj.getUsuarioById(matricula).enqueue(
-            object  : Callback<Usuario>{
+            object : Callback<Usuario>{
+                override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
+                    if(response.isSuccessful){
+                        Log.d("response data:", "getting data....")
+                        actualUser.value = response.body()
+                    }
+
+                }
+
                 override fun onFailure(call: Call<Usuario>, t: Throwable) {
-                    Log.d("response data:", "error data....")
+                    Log.d("ERROR data:", "....")
                     Log.e(ContentValues.TAG,t.toString());
                 }
 
-                override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
-                    if (response.isSuccessful){
-                        Log.d("response data:", "getting data....")
-                        myUser.value = response.body()
-                    }
-                }
             }
         )
-        return  myUser;
+        return actualUser;
     }
 
 
 
-}
+
+ }

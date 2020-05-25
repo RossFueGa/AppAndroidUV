@@ -1,43 +1,52 @@
 package com.example.mykeepapp.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.example.mykeepapp.ui.models.Usuario
+import androidx.preference.PreferenceManager
 import com.example.mykeepapp.R
-import com.example.mykeepapp.data.data.Api.ApiService
+import com.example.mykeepapp.ui.models.Usuario
 import com.example.mykeepapp.viewmodel.MyViewModel
-import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+
 
 class Login : AppCompatActivity() {
 
     private lateinit var  viewModel : MyViewModel
 
+    var user = Usuario()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        txtMatriculaAlumnoLogin.setText("S17004079")
+        passAlumnoLogin.setText("sopita12")
+        val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
 
-        aceptar_login.setOnClickListener {
+
+
+
+       aceptar_login.setOnClickListener {
             if (checkMatricula(txtMatriculaAlumnoLogin.text.toString())
-                && checkPassword(passAlumnoLogin.text.toString()) ) {
-
-                setUpModel(
+                    && checkPassword(passAlumnoLogin.text.toString()) &&
+                    setUpModel(
                     txtMatriculaAlumnoLogin.text.toString().toUpperCase(),
-                    passAlumnoLogin.text.toString())
+                    passAlumnoLogin.text.toString())) {
+
+                val editor  = prefs.edit()
+                editor.putString("matricula", user.matricula)
+                editor.apply()
+
+                Toast.makeText(this, "Bienvenido ${user.nombre}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, NavigationButtoms::class.java)
+                intent.putExtra("saludo", user.matricula)
                 startActivity(intent)
                 finish()
 
@@ -48,7 +57,6 @@ class Login : AppCompatActivity() {
         }
 
     }
-
 
 
     fun  checkMatricula (matricula : String) : Boolean {
@@ -117,32 +125,24 @@ class Login : AppCompatActivity() {
         return isValid;
     }
 
-    fun setUpModel(matricula : String, pass : String){
+    fun setUpModel(matricula : String, pass : String) : Boolean{
         viewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
+        var isValid = false
 
- /*       val usuarioObserver = Observer<List<Usuario>>{
-            for (user in it){
-                if (user.matricula.equals(matricula) && user.contrasena.equals(pass)){
-                    Toast.makeText(this, "Bienvedido ${user.nombre}", Toast.LENGTH_LONG).show()
-
-                    break;
-                }else{
-                    Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-*/
-        val usuarioOberver = Observer<Usuario> {
+        val oneUser = Observer<Usuario>{
             if(it.matricula.equals(matricula) && it.contrasena.equals(pass)){
-                Toast.makeText(this, "Bienvedido ${it.nombre}", Toast.LENGTH_LONG).show()
+                isValid = true;
+                Log.d("ENCONTRADO: ", "${it.matricula}")
+                user = it
+
             }else{
-                Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_LONG).show()
+
             }
         }
-        viewModel.getDataOneUserLive(matricula).observe(this, usuarioOberver)
 
+        viewModel.getOneUserDataLive(matricula).observe(this, oneUser)
+        Log.d("VALOR: ", "${isValid}")
+    return isValid;
     }
-
-
 
 }

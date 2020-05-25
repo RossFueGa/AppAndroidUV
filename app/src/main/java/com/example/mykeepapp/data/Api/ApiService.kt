@@ -9,7 +9,7 @@ interface ApiService {
     /*----------------------------Usuarios-----------------------*/
 
     @GET("Usuarios")
-    fun getUsuariosRecords(): Call<List<Usuario> >
+    fun getUsuariosRecords(): Call<List<Usuario>>
 
     @POST("Usuarios")
     fun insertUsuario(@Body body: Usuario): Call<String>

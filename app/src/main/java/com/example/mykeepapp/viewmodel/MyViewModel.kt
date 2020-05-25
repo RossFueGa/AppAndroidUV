@@ -10,12 +10,14 @@ class MyViewModel:  ViewModel(){
 
     val userRepo = UsuariosDataSet()
 
-    fun getDataUserLive(): LiveData<List<Usuario>>{
-        return userRepo.getUsuarios()
+
+    fun getOneUserDataLive(matricula: String) : LiveData<Usuario>{
+        return userRepo.getUserById(matricula)
     }
 
-    fun getDataOneUserLive(matricula : String): LiveData<Usuario>{
-        return userRepo.getUsuario(matricula)
-    }
+
+
+
+
 
 }
