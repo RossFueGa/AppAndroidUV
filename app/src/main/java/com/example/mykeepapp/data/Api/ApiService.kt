@@ -8,19 +8,13 @@ interface ApiService {
 
     /*----------------------------Usuarios-----------------------*/
 
-    @GET("Usuarios")
+    @GET("usuarios")
     fun getUsuariosRecords(): Call<List<Usuario>>
 
-    @POST("Usuarios")
+    @POST("usuarios")
     fun insertUsuario(@Body body: Usuario): Call<String>
 
-    @GET("Usuarios/{id}")
+    @GET("usuarios/{id}")
     fun getUsuarioById(@Path("id") id : String): Call<Usuario>
-
-    @PUT("Usuarios")
-    fun updateUsuario(@Body body: Usuario) : Call<String>
-
-    @DELETE("Usuarios/{id}")
-    fun deleteUsuario(@Path("id") id : String ): Call<String>
 
 }

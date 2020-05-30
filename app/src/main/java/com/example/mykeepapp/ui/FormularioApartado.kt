@@ -37,38 +37,46 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         setTime()
         setDate()
         btn_aceptar_apartado.setOnClickListener {
-            checkAparted(txtDiaApartado.text.toString())
-
+            checkGroup(txtGrupoFormularioApartado.text.toString())
+            checkDates()
         }
     }
 
 
-
-
-
-
-
-
-    fun checkAparted(grupo : String): Boolean{
-        val arregloGrupos = arrayOf(101, 102, 103,
-            201,202,203,301,302.303,401,402,403,501,502,503,601,602,603,701,702,703,801,802,803);
+    fun checkGroup(grupo : String): Boolean{
         var isValid = false
-
+        val arregloGrupos = arrayOf("201","202", "203",
+                                                "401","402","403",
+                                                "601","602","603",
+                                                "701","801");
         if (grupo.length == 3){
             for (i  in arregloGrupos.indices){
-                if(grupo.toInt() == i){
+                if( txtGrupoFormularioApartado.text.toString() == arregloGrupos.get(i) ){
                     isValid = true
-                }else{
-                    txtGrupoFormularioApartado.setError("Grupo no válido")
+
                 }
             }
-
+            if(isValid == false){
+                txtGrupoFormularioApartado.setError("Grupo no válido")
+            }
         }else{
             txtGrupoFormularioApartado.setError("Grupo no válido")
 
         }
 
     return isValid
+    }
+
+    fun checkDates() : Boolean{
+        var isValid = false
+        if(txt_time.text.toString() != "" && txt_timeA.text.toString() != "" && txtDiaApartado.text.toString() != ""){
+            isValid = true
+        }else{
+            Toast.makeText(this,"Debe llenar todos los campos!", Toast.LENGTH_SHORT).show()
+        }
+
+
+        return isValid;
     }
 
     fun goBack(){

@@ -1,11 +1,9 @@
 package com.example.mykeepapp.ui
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,7 +11,9 @@ import androidx.preference.PreferenceManager
 import com.example.mykeepapp.R
 import com.example.mykeepapp.ui.models.Usuario
 import com.example.mykeepapp.viewmodel.MyViewModel
+import com.google.common.hash.Hashing
 import kotlinx.android.synthetic.main.activity_login.*
+import java.nio.charset.StandardCharsets
 
 
 class Login : AppCompatActivity() {
@@ -37,7 +37,7 @@ class Login : AppCompatActivity() {
                     && checkPassword(passAlumnoLogin.text.toString()) &&
                     setUpModel(
                     txtMatriculaAlumnoLogin.text.toString().toUpperCase(),
-                    passAlumnoLogin.text.toString())) {
+                    encryptPassword(passAlumnoLogin.text.toString()))) {
 
                 val editor  = prefs.edit()
                 editor.putString("matricula", user.matricula)
@@ -125,7 +125,16 @@ class Login : AppCompatActivity() {
         return isValid;
     }
 
+    fun encryptPassword(pass : String) : String{
+        var sha256hex = Hashing.sha256()
+            .hashString(pass, StandardCharsets.UTF_8)
+            .toString()
+        return sha256hex
+    }
+
     fun setUpModel(matricula : String, pass : String) : Boolean{
+
+
         viewModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
         var isValid = false
 

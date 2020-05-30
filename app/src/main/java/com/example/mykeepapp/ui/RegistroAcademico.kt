@@ -24,7 +24,7 @@ class RegistroAcademico : AppCompatActivity() {
         RxJava2CallAdapterFactory.create())
         .addConverterFactory(
             GsonConverterFactory.create(gson))
-        .baseUrl("http://35.222.188.8:8080/ApiRestMiUV-V0.0.1/webresources/")
+        .baseUrl("http://35.222.188.8:8080/ApiRestMyKepp-1.0/webresources/")
         .build();
 
     var retrofitobj = retrofit.create(ApiService::class.java)

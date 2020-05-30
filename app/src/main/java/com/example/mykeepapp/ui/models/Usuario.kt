@@ -8,5 +8,6 @@ class Usuario()  {
     var apellidoPaterno : String = "";
     var apellidoMaterno : String = "";
     var contrasena : String = "";
+    var grupo : String = "";
 }
 
