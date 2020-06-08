@@ -3,10 +3,6 @@ package com.example.mykeepapp.ui
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.mykeepapp.ui.FragmentDetalleApartado
-import com.example.mykeepapp.ui.FragmentInicio
-import com.example.mykeepapp.ui.FragmentPerfil
-import com.example.mykeepapp.ui.FragmentSinMensajes
 
 class ViewAdapter(fa: FragmentActivity ) : FragmentStateAdapter(fa) {
     //Variable de vlase

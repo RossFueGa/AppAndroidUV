@@ -8,12 +8,9 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.example.mykeepapp.R
-import com.example.mykeepapp.ui.models.Usuario
-import kotlinx.android.synthetic.main.fragment_inicio.*
 
 
 /**
@@ -41,7 +38,6 @@ class FragmentInicio : Fragment() {
         btnTituloApartado.setOnClickListener {
             val myPrefs = prefs.getString("matricula", "noValue")
             Toast.makeText(activity, myPrefs, Toast.LENGTH_SHORT).show()
-
         }
 
 

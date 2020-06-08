@@ -1,5 +1,6 @@
 package com.example.mykeepapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -67,7 +68,10 @@ class RegistroAcademico : AppCompatActivity() {
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     if(response.isSuccessful()){
-                        Toast.makeText(this@RegistroAcademico, "Added", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@RegistroAcademico,"Registrado con éxito", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@RegistroAcademico, Login::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 }
             }

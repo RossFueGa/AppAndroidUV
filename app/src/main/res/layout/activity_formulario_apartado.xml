@@ -74,7 +74,8 @@
                     android:layout_marginHorizontal="40dp"
                     android:layout_height="wrap_content"
                     android:hint="@string/grupoFormularioApartado"
-                    app:startIconDrawable="@drawable/ic_group_black_24dp">
+                    app:startIconDrawable="@drawable/ic_group_black_24dp"
+                    android:editable="false">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtGrupoFormularioApartado"
@@ -85,7 +86,8 @@
                         android:textSize="25sp"
                         android:inputType="number"
                         android:textStyle="bold"
-                        android:textColor="@color/txtVerde"/>
+                        android:textColor="@color/txtVerde"
+                        android:editable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 

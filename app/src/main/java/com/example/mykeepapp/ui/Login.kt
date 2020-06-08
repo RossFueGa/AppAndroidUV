@@ -25,10 +25,10 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        txtMatriculaAlumnoLogin.setText("S17004079")
-        passAlumnoLogin.setText("sopita12")
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
 
+        txtMatriculaAlumnoLogin.setText("S17004079")
+        passAlumnoLogin.setText("sopita12")
 
 
 
@@ -40,7 +40,15 @@ class Login : AppCompatActivity() {
                     encryptPassword(passAlumnoLogin.text.toString()))) {
 
                 val editor  = prefs.edit()
+
                 editor.putString("matricula", user.matricula)
+                editor.putString("grupo", user.grupo)
+                editor.putString("nombre", user.nombre)
+                editor.putString("apPaterno", user.apellidoPaterno)
+                editor.putString("apMaterno", user.apellidoMaterno)
+                editor.putString("tipoUsuario", user.idTipoUsuario)
+                editor.putString("idCarrera", user.idCarrera)
+
                 editor.apply()
 
                 Toast.makeText(this, "Bienvenido ${user.nombre}", Toast.LENGTH_SHORT).show()

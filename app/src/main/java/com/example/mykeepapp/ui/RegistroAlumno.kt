@@ -1,5 +1,6 @@
 package com.example.mykeepapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -81,7 +82,11 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     if(response.isSuccessful()){
-                        Toast.makeText(this@RegistroAlumno, "Added", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@RegistroAlumno, "Registrado con éxito", Toast.LENGTH_LONG).show()
+
+                        val intent = Intent(this@RegistroAlumno, Login::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 }
             }

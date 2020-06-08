@@ -5,16 +5,11 @@ import android.app.TimePickerDialog
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
 import com.example.mykeepapp.R
-import com.example.mykeepapp.ui.models.Usuario
-import com.example.mykeepapp.viewmodel.MyViewModel
 import kotlinx.android.synthetic.main.activity_formulario_apartado.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,8 +22,9 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulario_apartado)
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
-        txtDiaApartado.setText(prefs.getString("matricula", "noValue"))
 
+        txtDiaApartado.setText(prefs.getString("matricula", "noValue"))
+        txtGrupoFormularioApartado.setText(prefs.getString("grupo", "noValue"))
 
 
         loadSpinner()

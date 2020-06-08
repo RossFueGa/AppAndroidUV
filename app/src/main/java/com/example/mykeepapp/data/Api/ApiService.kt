@@ -17,4 +17,8 @@ interface ApiService {
     @GET("usuarios/{id}")
     fun getUsuarioById(@Path("id") id : String): Call<Usuario>
 
+    @PUT("Usuarios")
+    fun updateUsuario(@Body body: Usuario) : Call<String>
+
+
 }

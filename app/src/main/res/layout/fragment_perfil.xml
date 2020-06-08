@@ -49,21 +49,24 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/txtNombrePerfil"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:layout_marginTop="24dp"
-                        android:text="Alonso Escamilla Rocafuerte"
+
                         android:textColor="#000"
                         android:textSize="21sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/txtTipoUsuarioPerfil"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:textAlignment="center"
                         android:layout_marginTop="10dp"
-                        android:text="Estudiante"
                         android:textColor="#000"
                         android:textSize="21sp" />
                 </LinearLayout>
@@ -156,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Acuerdo e confidencialidad"
+                    android:text="Acuerdo de confidencialidad"
                     android:textSize="@dimen/textSizeStandard"
                     android:textColor="#000"/>
 
@@ -164,6 +167,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/cerrarSesionPerfil"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="25dp"
