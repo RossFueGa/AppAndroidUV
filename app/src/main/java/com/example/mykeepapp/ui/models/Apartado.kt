@@ -1,12 +1,12 @@
 package com.example.mykeepapp.ui.models
 
 class Apartado {
-    private val idApartado = 0
-    private val matricula: String? = null
-    private val idEquipo: String? = null
-    private val idLugar: String? = null
-    private val grupo: String? = null
-    private val fecha: String? = null
-    private val horaInicio: String? = null
-    private val horaFinal: String? = null
+     var idApartado : String  = ""
+     var matricula: String  = ""
+     var idEquipo: String  = ""
+     var idLugar: String  = ""
+     var grupo: String  = ""
+     var fecha: String  = ""
+     var horaInicio: String  = ""
+     var horaFinal: String  = ""
 }

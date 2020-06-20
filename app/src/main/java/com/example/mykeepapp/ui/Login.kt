@@ -33,6 +33,8 @@ class Login : AppCompatActivity() {
 
 
        aceptar_login.setOnClickListener {
+           Log.d("Pass" ,encryptPassword(passAlumnoLogin.text.toString()))
+
             if (checkMatricula(txtMatriculaAlumnoLogin.text.toString())
                     && checkPassword(passAlumnoLogin.text.toString()) &&
                     setUpModel(

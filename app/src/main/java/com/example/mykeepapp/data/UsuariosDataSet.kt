@@ -39,6 +39,8 @@ class UsuariosDataSet {
                 override fun onResponse(call: Call<Usuario>, response: Response<Usuario>) {
                     if(response.isSuccessful){
                         Log.d("response data:", "getting data....")
+                        Log.d("response data:", response.body()?.matricula)
+                        Log.d("response data:", response.body()?.contrasena)
                         actualUser.value = response.body()
                     }
 
