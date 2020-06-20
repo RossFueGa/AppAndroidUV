@@ -45,9 +45,9 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulario_apartado)
+
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
 
-        txtDiaApartado.setText(prefs.getString("matricula", "noValue"))
         txtGrupoFormularioApartado.setText(prefs.getString("grupo", "noValue"))
 
         loadSpinner()
@@ -66,6 +66,11 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
     }
 
+    fun getDeviceToApart():String{
+        val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
+        return prefs.getString("Device", "no value").toString()
+    }
+
 
 
     fun getDevice(){
@@ -81,14 +86,14 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
                 ) {
                     if(response.isSuccessful){
                         for(indice in response.body()?.indices!!){
-                            if(response.body()!!.get(indice).estado.equals("Disponible")){
-                                Toast.makeText(this@FormularioApartado, "ENCONTRÉ UNO ${response.body()!!.get(indice).serial}", Toast.LENGTH_SHORT).show()
+                            if(response.body()!!.get(indice).estado.equals("Disponible") && response.body()!!.get(indice).idTipoEquipo.equals(getDeviceToApart())){
                                 doApart(response.body()!!.get(indice).idEquipo)
                                 updateStatusDevice(response.body()!!.get(indice).idEquipo, response.body()!!.get(indice).idTipoEquipo, response.body()!!.get(indice).serial)
                                 break;
                             }
                         }
                     }
+                    
                 }
             }
         )

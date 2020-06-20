@@ -24,6 +24,7 @@ class FragmentInicio : Fragment() {
     ): View? {
 
         val prefs  = PreferenceManager.getDefaultSharedPreferences(activity)
+        val editor  = prefs.edit()
 
         val vista = inflater.inflate(R.layout.fragment_inicio, container, false)
 
@@ -42,21 +43,30 @@ class FragmentInicio : Fragment() {
 
 
         btnMyApartadoComputo.setOnClickListener {
+            editor.putString("Device", "3" )
+            editor.apply()
             val intent = Intent(activity, FormularioApartado::class.java)
+
             startActivity(intent)
         }
 
         btnMyApartadoProyector.setOnClickListener {
+            editor.putString("Device", "1" )
+            editor.apply()
             val intent = Intent(activity, TiposProyectores::class.java)
             startActivity(intent)
         }
 
         btnMyApartadoBocina.setOnClickListener {
+            editor.putString("Device", "4" )
+            editor.apply()
             val intent = Intent(activity, FormularioApartado::class.java)
             startActivity(intent)
         }
 
         btnApartadoAmplificador.setOnClickListener {
+            editor.putString("Device", "5" )
+            editor.apply()
             val intent = Intent(activity, FormularioApartado::class.java)
             startActivity(intent)
         }
