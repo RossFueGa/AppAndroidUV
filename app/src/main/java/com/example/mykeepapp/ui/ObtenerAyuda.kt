@@ -1,12 +1,13 @@
-package com.example.mykeepapp
+package com.example.mykeepapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mykeepapp.R
 
-class cerrarSesion : AppCompatActivity() {
+class ObtenerAyuda : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cerrar_sesion)
+        setContentView(R.layout.activity_obtener_ayuda)
     }
 }

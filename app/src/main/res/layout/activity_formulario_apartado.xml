@@ -87,6 +87,7 @@
                         android:textStyle="bold"
                         android:textColor="@color/txtVerde"
                         android:focusable="false"
+                        android:background="@drawable/backtextview"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>

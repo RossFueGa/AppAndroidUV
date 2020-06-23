@@ -11,19 +11,30 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginTop="163dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:id="@+id/nada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Regresar equipo"
+                android:textColor="#0D9F46"
+                android:textSize="24sp"
+                tools:ignore="MissingConstraints" />
 
             <ImageView
                 android:layout_width="283dp"
@@ -33,21 +44,10 @@
                 android:src="@drawable/no_message"
                 tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/nada"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="NADA POR AQUÍ..."
-                android:textColor="#0D9F46"
-                android:textSize="@dimen/textSizeTitulos"
-                android:textStyle="bold"
-                tools:ignore="MissingConstraints" />
 
 
             <TextView
-                android:id="@+id/nada_mensaje"
+                android:id="@+id/txtMensajeDevolverEquipo"
                 android:layout_width="313dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -58,6 +58,18 @@
                 android:layout_marginBottom="163dp"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btnTerminarPrestamo"
+                android:layout_marginHorizontal="30sp"
+                android:layout_marginTop="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terminar préstamo"
+                android:background="@drawable/btn_aceptar_verde"
+                android:textColor="#ffffff" />
+
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

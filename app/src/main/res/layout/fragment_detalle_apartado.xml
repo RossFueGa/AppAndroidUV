@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Resumen de  Apartado"
+            android:text="Último apartado"
             android:textAlignment="center"
             android:textColor="@color/txtVerde"
             android:textSize="24sp" />
@@ -60,11 +60,14 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txtNombrePrestario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Nombre del prestatario"
-            android:textSize="@dimen/textSizeStandard" />
+            android:text=""
+            android:textSize="22sp"
+            android:textColor="@color/txtVerde"
+            android:background="@drawable/backtextview"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,12 +78,15 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txtMatriculaPrestario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:text="S17004090"
-            android:textSize="@dimen/textSizeStandard" />
+            android:text=""
+            android:textSize="22sp"
+            android:textColor="@color/txtVerde"
+            android:background="@drawable/backtextview"/>
 
         <View
             android:layout_width="match_parent"
@@ -100,26 +106,32 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txtHoraPrestario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="horario de inicio y fin "
-            android:textSize="@dimen/textSizeStandard" />
+            android:text=""
+            android:textSize="22sp"
+            android:textColor="@color/txtVerde"
+            android:background="@drawable/backtextview"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Materia"
+            android:text="Fecha"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/txtFechaPrestario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Materia que cursa o imparten"
-            android:textSize="@dimen/textSizeStandard" />
+            android:text=""
+            android:textSize="22sp"
+            android:textColor="@color/txtVerde"
+            android:background="@drawable/backtextview"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -128,19 +140,35 @@
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aula"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aula"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
 
-            <TextView
-                android:layout_width="90dp"
+                <TextView
+                    android:layout_marginLeft="4sp"
+                    android:id="@+id/txtAulaPrestario"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="22sp"
+                    android:textColor="@color/txtVerde"
+                    android:background="@drawable/backtextview"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="" />
-
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,9 +177,15 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="90dp"
+                android:id="@+id/txtEdificioPrestario"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:textSize="22sp"
+                android:textColor="@color/txtVerde"
+                android:background="@drawable/backtextview"
+                android:text=""
+                android:textAlignment="center"/>
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -168,17 +202,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Tipo de Equipo"
+            android:text="Serial de equipo"
             android:textSize="20sp"
             android:textStyle="bold" />
 
 
         <TextView
+            android:id="@+id/txtSerial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="No. de serie del equipo"
-            android:textSize="@dimen/textSizeStandard" />
+            android:text=""
+            android:textSize="22sp"
+            android:textColor="@color/txtVerde"
+            android:background="@drawable/backtextview"  />
+        <Button
+            android:id="@+id/btnActualizarStatus"
+            android:layout_marginTop="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Actualizar status"
+            android:background="@drawable/btn_aceptar_verde"
+            android:textColor="#ffffff" />
+
+
     </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

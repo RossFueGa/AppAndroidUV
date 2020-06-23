@@ -74,6 +74,10 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
 
     fun getDevice(){
+        val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor  = prefs.edit()
+        editor.putString("horaApartado", txt_time.text.toString() + "-" + txt_timeA.text.toString())
+
         retrofitobj.getEquipos().enqueue(
             object : Callback<List<Equipo>> {
                 override fun onFailure(call: Call<List<Equipo>>, t: Throwable) {
@@ -86,9 +90,11 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
                 ) {
                     if(response.isSuccessful){
                         for(indice in response.body()?.indices!!){
-                            if(response.body()!!.get(indice).estado.equals("Disponible") && response.body()!!.get(indice).idTipoEquipo.equals(getDeviceToApart())){
+                            if(response.body()!!.get(indice).estado.equals("DISPONIBLE") && response.body()!!.get(indice).idTipoEquipo.equals(getDeviceToApart())){
                                 doApart(response.body()!!.get(indice).idEquipo)
                                 updateStatusDevice(response.body()!!.get(indice).idEquipo, response.body()!!.get(indice).idTipoEquipo, response.body()!!.get(indice).serial)
+                                editor.putString("serialEquipo", response.body()!!.get(indice).serial)
+                                editor.apply()
                                 break;
                             }
                         }
@@ -126,6 +132,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
     fun doApart(idEquipo: String){
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor  = prefs.edit()
 
         var myApartado = Apartado()
         myApartado.matricula = prefs.getString("matricula", "noValue").toString()
@@ -135,6 +142,12 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         myApartado.horaFinal = txt_timeA.text.toString()
         myApartado.idEquipo = idEquipo
         myApartado.idLugar = getPlace(spinnerAulaApartado.selectedItem.toString(), spinnerEdificioApartado.selectedItem.toString()).toString()
+
+        editor.putString("aulaApartado", spinnerAulaApartado.selectedItem.toString())
+        editor.putString("edificioApartado", spinnerEdificioApartado.selectedItem.toString())
+        editor.putString("fechaApartado", myApartado.fecha)
+
+
 
         retrofitobj.insertApartado(myApartado).enqueue(
             object : Callback<String> {
@@ -147,6 +160,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     if(response.isSuccessful()){
                         Toast.makeText(this@FormularioApartado, "Apartado con éxito", Toast.LENGTH_LONG).show()
+                        editor.apply()
                     }
                 }
             }

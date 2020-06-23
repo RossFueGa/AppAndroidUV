@@ -50,6 +50,7 @@ class Login : AppCompatActivity() {
                 editor.putString("apMaterno", user.apellidoMaterno)
                 editor.putString("tipoUsuario", user.idTipoUsuario)
                 editor.putString("idCarrera", user.idCarrera)
+                editor.putString("serialEquipo", "Cuando tengas equipos apartados aparecerán aquí")
 
                 editor.apply()
 

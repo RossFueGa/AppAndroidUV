@@ -29,7 +29,6 @@ class FragmentInicio : Fragment() {
         val vista = inflater.inflate(R.layout.fragment_inicio, container, false)
 
 
-
         var btnMyApartadoComputo = vista.findViewById<LinearLayout>(R.id.apartadoComputo)
         var btnMyApartadoProyector = vista.findViewById<LinearLayout>(R.id.apartadoProyectores)
         var btnMyApartadoBocina = vista.findViewById<LinearLayout>(R.id.apartadoBocinas)
