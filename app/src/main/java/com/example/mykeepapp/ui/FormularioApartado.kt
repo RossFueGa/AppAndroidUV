@@ -93,7 +93,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
                             }
                         }
                     }
-                    
+
                 }
             }
         )
