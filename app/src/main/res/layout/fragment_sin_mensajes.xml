@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_gravity="center"
+    android:layout_gravity="center_vertical"
     android:layout_height="match_parent"
     android:id="@+id/scrollView2">
 
@@ -52,17 +52,41 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:text="Cuando tengas equipos apartados aparecerán aquí"
+                android:text="Ingresa el código de devolución proporcionado por el administador"
                 android:textAlignment="center"
                 android:textColor="#0FAA4C"
-                android:layout_marginBottom="163dp"
+                android:layout_marginBottom="15dp"
                 android:textSize="20dp"
                 tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtMatriculaLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Código de devolución"
+                app:startIconDrawable="@drawable/ic_lock_24px"
+                android:layout_marginBottom="30sp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtCodigoDevolucionFormularioApartado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/backtextview"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:textColor="@color/txtAzul"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnTerminarPrestamo"
                 android:layout_marginHorizontal="30sp"
-                android:layout_marginTop="12sp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Terminar préstamo"

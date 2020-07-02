@@ -32,12 +32,12 @@ class FragmentPerfil : Fragment() {
         val nombreUsuario = prefs.getString("nombre", "noValue")
         val apellidosUsuario = prefs.getString("apPaterno", "noValue") + " "+  prefs.getString("apMaterno", "noValue")
 
-        val tipoUsuario = prefs.getString("tipoUsuario", "noValue")
+        val tipoUsuario = prefs.getInt("tipoUsuario", 666)
 
 
 
         myTxtNombreUsuario.text = nombreUsuario + " " + apellidosUsuario
-        myTxtTipoUsuario.text = getStatus(tipoUsuario.toString())
+        myTxtTipoUsuario.text = getStatus(tipoUsuario)
 
         btnCerrarSesion.setOnClickListener {
             Toast.makeText(activity, "Cuídate mucho!", Toast.LENGTH_SHORT).show()
@@ -51,11 +51,11 @@ class FragmentPerfil : Fragment() {
 
 
 
-    fun getStatus(idSatus : String) : String{
+    fun getStatus(idSatus : Int) : String{
         var myStatus = String()
         when(idSatus){
-            "1" -> myStatus = "Académico"
-            "2" -> myStatus = "Estudiante"
+            1 -> myStatus = "Académico"
+            2 -> myStatus = "Estudiante"
         }
         return myStatus;
     }

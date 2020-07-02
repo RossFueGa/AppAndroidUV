@@ -11,11 +11,34 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.preference.PreferenceManager
 import com.example.mykeepapp.R
+import com.example.mykeepapp.data.data.Api.ApiService
+import com.example.mykeepapp.ui.models.Equipo
+import com.google.gson.GsonBuilder
+import kotlinx.android.synthetic.main.fragment_detalle_apartado.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * A simple [Fragment] subclass.
  */
 class FragmentDetalleApartado : Fragment() {
+
+    var gson = GsonBuilder()
+        .setLenient()
+        .create()
+
+    val retrofit = Retrofit.Builder().addCallAdapterFactory(
+        RxJava2CallAdapterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create(gson))
+        .baseUrl("http://35.222.188.8:8080/ApiRestMyKepp-1.0/webresources/")
+        .build();
+
+    var retrofitobj = retrofit.create(ApiService::class.java)
 
     override fun onCreateView(
 
@@ -23,9 +46,12 @@ class FragmentDetalleApartado : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
+        val prefs  = PreferenceManager.getDefaultSharedPreferences(activity)
+
+
 
         val vista = inflater.inflate(R.layout.fragment_detalle_apartado, container, false)
-
+/*
         var txtNombrePrestario = vista.findViewById<TextView>(R.id.txtNombrePrestario)
         var txtMatriculaPrestario = vista.findViewById<TextView>(R.id.txtMatriculaPrestario)
         var txtHoraFinPrestario = vista.findViewById<TextView>(R.id.txtHoraPrestario)
@@ -33,25 +59,77 @@ class FragmentDetalleApartado : Fragment() {
         var txtEdificioPrestario = vista.findViewById<TextView>(R.id.txtEdificioPrestario)
         var txtSerialPrestario = vista.findViewById<TextView>(R.id.txtSerial)
         var txtFechaPrestario = vista.findViewById<TextView>(R.id.txtFechaPrestario)
-        val btnUpdateStatus = vista.findViewById<Button>(R.id.btnActualizarStatus)
+*/
+        val btnMyconfirmarApartado = vista.findViewById<Button>(R.id.btnConfirmarApartado)
+        val btnMyCancelarApartado = vista.findViewById<Button>(R.id.btnCancelarApartado)
+        val myIdPrestamo = vista.findViewById<TextView>(R.id.idPrestamo)
 
+        myIdPrestamo.setText(prefs.getLong("idDoneApartado", -9999).toString())
 
-        btnUpdateStatus.setOnClickListener {
-            val prefs  = PreferenceManager.getDefaultSharedPreferences(activity)
+        btnMyconfirmarApartado.setOnClickListener {
+            if(txtCodigoConfirmacionFormularioApartado.text.toString() == prefs.getInt("codigoConfirmacion" , 666).toString()){
 
-            txtNombrePrestario.text = prefs.getString("nombre","noValue")
-            txtMatriculaPrestario.text = prefs.getString("matricula", "noValue")
-            txtHoraFinPrestario.text = prefs.getString("horaApartado","noValue")
-            txtAulaPrestario.text = prefs.getString("aulaApartado", "noValues")
-            txtEdificioPrestario.text = prefs.getString("edificioApartado", "noValues")
-            txtSerialPrestario.text = prefs.getString("serialEquipo", "noValue")
-            txtFechaPrestario.text = prefs.getString("fechaApartado", "noValue")
+                btnMyCancelarApartado.setBackgroundResource(R.color.txtClaro)
+
+                updateStatusDevice(prefs.getInt("idEquipo", 666), prefs.getInt("idTipoEquipo",666),
+                    prefs.getString("serialEquipo", "noValue").toString(), 1)
+
+            }
         }
 
+        btnMyCancelarApartado.setOnClickListener {
+            //btnConfirmarApartado.isEnabled = false;
 
+            updateStatusDevice(prefs.getInt("idEquipo", 666), prefs.getInt("idTipoEquipo",666),
+                prefs.getString("serialEquipo", "noValue").toString(), 2)
+
+        }
 
         // Inflate the layout for this fragment
         return vista
     }
+
+    fun updateStatusDevice(idEquipo:Int, idTipoEquipo : Int, serial : String, status: Int){
+        var device = Equipo();
+        var upStatus = ""
+        when (status){
+            1 -> upStatus = "PRESTADO"
+            2 -> upStatus = "DISPONIBLE"
+        }
+
+        device.idEquipo = idEquipo
+        device.idTipoEquipo = idTipoEquipo
+        device.serial = serial
+        device.estado = upStatus
+
+        retrofitobj.updateEquipo(device).enqueue(
+            object  : Callback<String> {
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if(response.isSuccessful){
+                        Toast.makeText(activity, "Completado", Toast.LENGTH_SHORT).show()
+                        setData()
+                    }
+                }
+
+            }
+        )
+    }
+
+    fun setData(){
+        val prefs  = PreferenceManager.getDefaultSharedPreferences(activity)
+        txtNombrePrestario.text = prefs.getString("nombre","noValue")
+        txtMatriculaPrestario.text = prefs.getString("matricula", "noValue")
+        txtHoraPrestario.text = prefs.getString("horaApartado","noValue")
+        txtAulaPrestario.text = prefs.getString("aulaApartado", "noValues")
+        txtEdificioPrestario.text = prefs.getString("edificioApartado", "noValues")
+        txtSerial.text = prefs.getString("serialEquipo", "noValue")
+        txtFechaPrestario.text = prefs.getString("fechaApartado", "noValue")
+    }
+
+
 
 }

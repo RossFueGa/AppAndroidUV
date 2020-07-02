@@ -61,11 +61,11 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun insertOne(){
-        val usuarioId = "2"
+        val usuarioId = 2
         var user = Usuario()
         user.matricula = txtMatriculaAlumno.text.toString()
         user.idTipoUsuario = usuarioId
-        user.idCarrera = (spinnerCarrera.selectedItemPosition + 1).toString()
+        user.idCarrera = (spinnerCarrera.selectedItemPosition + 1)
         user.nombre = txtNombreAlumno.text.toString()
         user.apellidoPaterno = txtApellidoPaternoAlumno.text.toString()
         user.apellidoMaterno = txtApellidoMaternoAlumno.text.toString()

@@ -42,7 +42,7 @@ class FragmentInicio : Fragment() {
 
 
         btnMyApartadoComputo.setOnClickListener {
-            editor.putString("Device", "3" )
+            editor.putInt("Device", 3 )
             editor.apply()
             val intent = Intent(activity, FormularioApartado::class.java)
 
@@ -50,21 +50,21 @@ class FragmentInicio : Fragment() {
         }
 
         btnMyApartadoProyector.setOnClickListener {
-            editor.putString("Device", "1" )
+            editor.putInt("Device", 2 )
             editor.apply()
             val intent = Intent(activity, TiposProyectores::class.java)
             startActivity(intent)
         }
 
         btnMyApartadoBocina.setOnClickListener {
-            editor.putString("Device", "4" )
+            editor.putInt("Device", 4 )
             editor.apply()
             val intent = Intent(activity, FormularioApartado::class.java)
             startActivity(intent)
         }
 
         btnApartadoAmplificador.setOnClickListener {
-            editor.putString("Device", "5" )
+            editor.putInt("Device", 5 )
             editor.apply()
             val intent = Intent(activity, FormularioApartado::class.java)
             startActivity(intent)

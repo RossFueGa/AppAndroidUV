@@ -50,11 +50,11 @@ class RegistroAcademico : AppCompatActivity() {
     }
 
     fun insertOne(){
-        val usuarioId = "1"
+        val usuarioId = 1
         var user = Usuario()
         user.matricula = txtMatriculaAcademico.text.toString()
         user.idTipoUsuario = usuarioId
-        user.idCarrera = "1"
+        user.idCarrera = 0
         user.nombre = txtNombreAcademico.text.toString()
         user.apellidoPaterno = txtApellidoPaternoAcademico.text.toString()
         user.apellidoMaterno = txtApellidoMaternoAcademico.text.toString()

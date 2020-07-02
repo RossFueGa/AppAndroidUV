@@ -16,6 +16,7 @@ import com.example.mykeepapp.ui.models.Apartado
 import com.example.mykeepapp.ui.models.Equipo
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_formulario_apartado.*
+import kotlinx.android.synthetic.main.fragment_detalle_apartado.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +27,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListener {
+
+
+    val codesRange : IntRange = 1666..333
 
     var gson = GsonBuilder()
         .setLenient()
@@ -46,9 +50,16 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulario_apartado)
 
+
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
 
-        txtGrupoFormularioApartado.setText(prefs.getString("grupo", "noValue"))
+        if(prefs.getInt("tipoUsuario", 666) == 2){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                txtGrupoFormularioApartado.focusable = View.NOT_FOCUSABLE
+                txtGrupoFormularioApartado.setText(prefs.getString("grupo", "abc"))
+            }
+        }
+
 
         loadSpinner()
         goBack()
@@ -61,21 +72,24 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
             checkGroup(txtGrupoFormularioApartado.text.toString()) &&
             checkDates()){
                 getDevice()
+
             }
         }
 
     }
 
-    fun getDeviceToApart():String{
+    fun getDeviceToApart():Int{
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
-        return prefs.getString("Device", "no value").toString()
+        return prefs.getInt("Device", 666)
     }
 
 
 
     fun getDevice(){
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
+
         val editor  = prefs.edit()
+
         editor.putString("horaApartado", txt_time.text.toString() + "-" + txt_timeA.text.toString())
 
         retrofitobj.getEquipos().enqueue(
@@ -90,10 +104,12 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
                 ) {
                     if(response.isSuccessful){
                         for(indice in response.body()?.indices!!){
-                            if(response.body()!!.get(indice).estado.equals("DISPONIBLE") && response.body()!!.get(indice).idTipoEquipo.equals(getDeviceToApart())){
+                            if(response.body()!!.get(indice).estado.equals("DISPONIBLE") && response.body()!!.get(indice).idTipoEquipo == getDeviceToApart()){
                                 doApart(response.body()!!.get(indice).idEquipo)
                                 updateStatusDevice(response.body()!!.get(indice).idEquipo, response.body()!!.get(indice).idTipoEquipo, response.body()!!.get(indice).serial)
                                 editor.putString("serialEquipo", response.body()!!.get(indice).serial)
+                                editor.putInt("idEquipo", response.body()!!.get(indice).idEquipo)
+                                editor.putInt("idTipoEquipo", response.body()!!.get(indice).idTipoEquipo)
                                 editor.apply()
                                 break;
                             }
@@ -105,12 +121,12 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         )
     }
 
-    fun updateStatusDevice(idEquipo:String, idTipoEquipo : String, serial : String){
+    fun updateStatusDevice(idEquipo:Int, idTipoEquipo : Int, serial : String){
         var device = Equipo();
         device.idEquipo = idEquipo
         device.idTipoEquipo = idTipoEquipo
         device.serial = serial
-        device.estado = "PRESTADO"
+        device.estado = "PENDIENTE"
 
         retrofitobj.updateEquipo(device).enqueue(
             object  : Callback<String>{
@@ -130,18 +146,22 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
 
 
-    fun doApart(idEquipo: String){
+    fun doApart(idEquipo: Int){
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
         val editor  = prefs.edit()
 
         var myApartado = Apartado()
         myApartado.matricula = prefs.getString("matricula", "noValue").toString()
-        myApartado.grupo = prefs.getString("grupo", "noValue").toString()
+        myApartado.grupo = txtGrupoFormularioApartado.text.toString()
         myApartado.fecha = txtDiaApartado.text.toString()
         myApartado.horaInicio = txt_time.text.toString()
         myApartado.horaFinal = txt_timeA.text.toString()
         myApartado.idEquipo = idEquipo
-        myApartado.idLugar = getPlace(spinnerAulaApartado.selectedItem.toString(), spinnerEdificioApartado.selectedItem.toString()).toString()
+        myApartado.idLugar = getPlace(spinnerAulaApartado.selectedItem.toString(), spinnerEdificioApartado.selectedItem.toString())
+        myApartado.codigoConfirmacion = getRandomCode()
+        myApartado.codigoDevolucion = getRandomCode()
+        myApartado.estado = "PENDIENTE"
+
 
         editor.putString("aulaApartado", spinnerAulaApartado.selectedItem.toString())
         editor.putString("edificioApartado", spinnerEdificioApartado.selectedItem.toString())
@@ -150,22 +170,32 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
 
         retrofitobj.insertApartado(myApartado).enqueue(
-            object : Callback<String> {
-                override fun onFailure(call: Call<String>, t: Throwable) {
+            object : Callback<Long> {
+                override fun onFailure(call: Call<Long>, t: Throwable) {
                     Toast.makeText(this@FormularioApartado, "ERROR", Toast.LENGTH_LONG).show()
                     Log.d("ERROR", t.message)
 
                 }
 
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    if(response.isSuccessful()){
+                override fun onResponse(call: Call<Long>, response: Response<Long>) {
+                    if(response.isSuccessful){
                         Toast.makeText(this@FormularioApartado, "Apartado con éxito", Toast.LENGTH_LONG).show()
+                        editor.putInt("codigoConfirmacion", myApartado.codigoConfirmacion)
+                        editor.putInt("codigoDevolucion", myApartado.codigoDevolucion)
+                        editor.putLong("idDoneApartado" , response.body()!!)
+                        Log.d("idApartado", response.body()!!.toString())
                         editor.apply()
                     }
                 }
             }
         )
 
+    }
+
+
+    fun getRandomCode() : Int{
+        val randomNumber = Random()
+        return randomNumber.nextInt((codesRange.last - codesRange.first) + codesRange.first)
     }
 
     fun getPlace(aula : String , edificio : String) : Int{
@@ -206,7 +236,6 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         return placesList.indexOf(Pair(aula, edificio))+1
 
     }
-
 
     fun checkGroup(grupo : String): Boolean{
         var isValid = false
@@ -294,7 +323,6 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         spinnerEdificio.onItemSelectedListener = this
     }
 
-
     fun setTimeFrom(){
         pickTimeDe.setOnClickListener {
             val cal = Calendar.getInstance()
@@ -302,7 +330,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
 
-                txt_time.text = SimpleDateFormat("HH:mm").format(cal.time)
+                txt_time.text = SimpleDateFormat("HH:mm:ss").format(cal.time)
             }
 
             TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
@@ -312,13 +340,16 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
     fun setTime(){
         pickTimeA.setOnClickListener {
             val cal = Calendar.getInstance()
+
             val timeSetListener = TimePickerDialog.OnTimeSetListener{ view: TimePicker?, hour: Int, minute: Int ->
                 cal.set(Calendar.HOUR_OF_DAY, hour)
                 cal.set(Calendar.MINUTE, minute)
 
+
                 //ingresar la hora en el tex_time
 
-                txt_timeA.text = SimpleDateFormat("HH:mm").format(cal.time)
+                txt_timeA.text = SimpleDateFormat("HH:mm:ss").format(cal.time)
+
             }
 
             TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
@@ -334,7 +365,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
             val day = c.get(Calendar.DAY_OF_MONTH)
 
             val showDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{   view, year, month, dayOfMonth ->
-                txtDiaApartado.setText("" + dayOfMonth + "/" + (month+1) + "/" + year )
+                txtDiaApartado.setText("" + year + "-" + (month+1) + "-" + dayOfMonth   )
             }, year, month, day)
 
             showDate.show()

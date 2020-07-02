@@ -17,7 +17,7 @@ class TiposProyectores : AppCompatActivity() {
         val editor  = prefs.edit()
 
         btnTipoHDMI.setOnClickListener {
-            editor.putString("Device", "1" )
+            editor.putInt("Device", 1 )
             editor.apply()
             val intent = Intent(this,
                 FormularioApartado::class.java)
@@ -25,7 +25,7 @@ class TiposProyectores : AppCompatActivity() {
         }
 
         btnTipoVGA.setOnClickListener {
-            editor.putString("Device", "2" )
+            editor.putInt("Device", 2 )
             editor.apply()
             val intent = Intent(this,
                 FormularioApartado::class.java)

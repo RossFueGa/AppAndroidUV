@@ -34,4 +34,6 @@ class FragmentSinMensajes : Fragment() {
         return vista
     }
 
+
+
 }

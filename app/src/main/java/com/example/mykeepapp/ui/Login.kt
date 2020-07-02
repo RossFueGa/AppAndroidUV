@@ -48,13 +48,12 @@ class Login : AppCompatActivity() {
                 editor.putString("nombre", user.nombre)
                 editor.putString("apPaterno", user.apellidoPaterno)
                 editor.putString("apMaterno", user.apellidoMaterno)
-                editor.putString("tipoUsuario", user.idTipoUsuario)
-                editor.putString("idCarrera", user.idCarrera)
-                editor.putString("serialEquipo", "Cuando tengas equipos apartados aparecerán aquí")
+                editor.putInt("tipoUsuario", user.idTipoUsuario)
+                editor.putInt("idCarrera", user.idCarrera)
 
                 editor.apply()
 
-                Toast.makeText(this, "Bienvenido ${user.nombre}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Bienvenido ${user.grupo}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, NavigationButtoms::class.java)
                 intent.putExtra("saludo", user.matricula)
