@@ -1,7 +1,6 @@
 package com.example.mykeepapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -51,15 +50,6 @@ class FragmentDetalleApartado : Fragment() {
 
 
         val vista = inflater.inflate(R.layout.fragment_detalle_apartado, container, false)
-/*
-        var txtNombrePrestario = vista.findViewById<TextView>(R.id.txtNombrePrestario)
-        var txtMatriculaPrestario = vista.findViewById<TextView>(R.id.txtMatriculaPrestario)
-        var txtHoraFinPrestario = vista.findViewById<TextView>(R.id.txtHoraPrestario)
-        var txtAulaPrestario = vista.findViewById<TextView>(R.id.txtAulaPrestario)
-        var txtEdificioPrestario = vista.findViewById<TextView>(R.id.txtEdificioPrestario)
-        var txtSerialPrestario = vista.findViewById<TextView>(R.id.txtSerial)
-        var txtFechaPrestario = vista.findViewById<TextView>(R.id.txtFechaPrestario)
-*/
         val btnMyconfirmarApartado = vista.findViewById<Button>(R.id.btnConfirmarApartado)
         val btnMyCancelarApartado = vista.findViewById<Button>(R.id.btnCancelarApartado)
         val myIdPrestamo = vista.findViewById<TextView>(R.id.idPrestamo)
@@ -69,11 +59,11 @@ class FragmentDetalleApartado : Fragment() {
         btnMyconfirmarApartado.setOnClickListener {
             if(txtCodigoConfirmacionFormularioApartado.text.toString() == prefs.getInt("codigoConfirmacion" , 666).toString()){
 
-                btnMyCancelarApartado.setBackgroundResource(R.color.txtClaro)
-
                 updateStatusDevice(prefs.getInt("idEquipo", 666), prefs.getInt("idTipoEquipo",666),
                     prefs.getString("serialEquipo", "noValue").toString(), 1)
 
+            }else{
+                txtCodigoConfirmacionFormularioApartado.setError("Código no válido!")
             }
         }
 

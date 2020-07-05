@@ -26,6 +26,9 @@ interface ApiService {
     @POST("apartados")
     fun insertApartado(@Body body: Apartado ): Call<Long>
 
+    @PUT("apartados")
+    fun updateApartado(@Body body: Apartado): Call<String>
+
     /*----------------------------Equipos-----------------------*/
     @GET("equipos")
     fun getEquipos() : Call<List<Equipo>>

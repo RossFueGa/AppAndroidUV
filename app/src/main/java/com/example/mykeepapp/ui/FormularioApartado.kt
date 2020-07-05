@@ -53,7 +53,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
 
-        if(prefs.getInt("tipoUsuario", 666) == 2){
+        if(prefs.getInt("tipoUsuario", -9999) == 2){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 txtGrupoFormularioApartado.focusable = View.NOT_FOCUSABLE
                 txtGrupoFormularioApartado.setText(prefs.getString("grupo", "abc"))
@@ -68,14 +68,72 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         setDate()
 
         btn_aceptar_apartado.setOnClickListener {
+
+
             if(
             checkGroup(txtGrupoFormularioApartado.text.toString()) &&
-            checkDates()){
+            checkDates() && checkDateToApart(txtDiaApartado.text.toString())
+            && checkTimeToApart(txt_time.text.toString(), txt_timeA.text.toString())){
+
                 getDevice()
 
             }
         }
 
+    }
+
+    fun checkDateToApart(date: String) : Boolean{
+        var isValid = false;
+        //Actual date from calendar
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH) + 1
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        //Data from user's selected date
+        var myDates = date.split("-")
+        var myYear = Integer.valueOf(myDates.get(0))
+        var myMonth = Integer.valueOf(myDates.get(1))
+        var myDay = Integer.valueOf(myDates.get(2))
+
+
+
+        if(myYear == year && myMonth == month && (myDay >= day && myDay <= day+3 ) ){
+            isValid = true
+            Toast.makeText(this@FormularioApartado, "Logrado", Toast.LENGTH_SHORT).show()
+        }else{
+            txtDiaApartado.setError("Fecha no válida!")
+        }
+
+        myDates.forEach(::println)
+
+
+        return  isValid;
+    }
+
+    fun checkTimeToApart(horaInicio: String, horaFinal:String):Boolean{
+        var isValid = false
+
+        var myStartTime = horaInicio.split(":")
+        var myFinalTime = horaFinal.split(":")
+
+        var myHourStart  = myStartTime.get(0)
+        var myMinutesStart = myStartTime.get(1)
+        var startTime = myHourStart + myMinutesStart
+
+        var myHourFinal = myFinalTime.get(0)
+        var myMinutesFinal = myFinalTime.get(1)
+        var finalTime = myHourFinal + myMinutesFinal
+
+
+        if(Integer.parseInt(startTime) < Integer.parseInt(finalTime) && Integer.parseInt(startTime) >= 700 && Integer.parseInt(startTime) <= 2099 && Integer.parseInt(finalTime) <= 2100 && Integer.parseInt(finalTime) >=701){
+            isValid = true;
+            Toast.makeText(this@FormularioApartado, "Hora válida", Toast.LENGTH_SHORT).show()
+
+        }else{
+            Toast.makeText(this@FormularioApartado, "Error de hora!", Toast.LENGTH_SHORT).show()
+        }
+        return isValid;
     }
 
     fun getDeviceToApart():Int{
@@ -144,11 +202,11 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         )
     }
 
-
-
     fun doApart(idEquipo: Int){
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
         val editor  = prefs.edit()
+
+
 
         var myApartado = Apartado()
         myApartado.matricula = prefs.getString("matricula", "noValue").toString()
@@ -166,6 +224,9 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
         editor.putString("aulaApartado", spinnerAulaApartado.selectedItem.toString())
         editor.putString("edificioApartado", spinnerEdificioApartado.selectedItem.toString())
         editor.putString("fechaApartado", myApartado.fecha)
+        editor.putString("horaInicio", myApartado.horaInicio)
+        editor.putString("horaFinal", myApartado.horaFinal)
+        editor.putInt("idLugar", myApartado.idLugar);
 
 
 
@@ -239,10 +300,10 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
     fun checkGroup(grupo : String): Boolean{
         var isValid = false
-        val arregloGrupos = arrayOf("201","202", "203",
-                                                "401","402","403",
-                                                "601","602","603",
-                                                "701","801");
+        val arregloGrupos = arrayOf("101", "102", "103", "201","202", "203",
+                                                "301", "302", "303", "401","402", "403",
+                                                "501", "502", "503", "601","602", "603",
+                                                "701", "702", "703", "801", "802", "803");
         if (grupo.length == 3){
             for (i  in arregloGrupos.indices){
                 if( txtGrupoFormularioApartado.text.toString() == arregloGrupos.get(i) ){
@@ -264,7 +325,9 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
     fun checkDates() : Boolean{
         var isValid = false
         if(txt_time.text.toString() != "" && txt_timeA.text.toString() != "" && txtDiaApartado.text.toString() != ""){
-            isValid = true
+           isValid = true
+
+
         }else{
             Toast.makeText(this,"Debe llenar todos los campos!", Toast.LENGTH_SHORT).show()
         }
@@ -358,6 +421,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun setDate(){
+
         btnDiaApartado.setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
@@ -366,8 +430,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
             val showDate = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{   view, year, month, dayOfMonth ->
                 txtDiaApartado.setText("" + year + "-" + (month+1) + "-" + dayOfMonth   )
-            }, year, month, day)
-
+                }, year, month, day)
             showDate.show()
 
 

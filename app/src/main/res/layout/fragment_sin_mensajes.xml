@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,7 +60,6 @@
                 tools:ignore="MissingConstraints" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtMatriculaLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -77,6 +76,7 @@
                     android:background="@drawable/backtextview"
                     android:inputType="number"
                     android:maxLength="4"
+                    android:textAlignment="center"
                     android:textColor="@color/txtAzul"
                     android:textSize="25sp"
                     android:textStyle="bold" />
