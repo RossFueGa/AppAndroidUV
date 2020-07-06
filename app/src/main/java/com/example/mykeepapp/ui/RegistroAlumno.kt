@@ -77,7 +77,6 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 override fun onFailure(call: Call<String>, t: Throwable) {
                     Toast.makeText(this@RegistroAlumno, "ERROR", Toast.LENGTH_LONG).show()
                     Log.d("ERROR", t.message)
-
                 }
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {

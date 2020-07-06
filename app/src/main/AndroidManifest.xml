@@ -30,6 +30,8 @@
         <activity android:name=".ui.FormularioApartado" />
         <activity android:name=".ui.TiposProyectores" />
         <activity android:name=".ui.SinDisponibilidad" />
+        <activity android:name=".ui.AcuerdoConfidencialidad" />
+
     </application>
 
 </manifest>

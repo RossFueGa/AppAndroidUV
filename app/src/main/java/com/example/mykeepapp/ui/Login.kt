@@ -50,10 +50,11 @@ class Login : AppCompatActivity() {
                 editor.putString("apMaterno", user.apellidoMaterno)
                 editor.putInt("tipoUsuario", user.idTipoUsuario)
                 editor.putInt("idCarrera", user.idCarrera)
+                editor.putString("rawPassword", passAlumnoLogin.text.toString())
 
                 editor.apply()
 
-                Toast.makeText(this, "Bienvenido ${user.grupo}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Password ${prefs.getString("rawPassword", "NoPasswordValue")}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, NavigationButtoms::class.java)
                 intent.putExtra("saludo", user.matricula)

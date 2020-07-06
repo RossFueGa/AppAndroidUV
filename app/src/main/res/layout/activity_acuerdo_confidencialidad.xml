@@ -24,6 +24,7 @@
             tools:ignore="MissingConstraints">
 
             <ImageView
+                android:id="@+id/goBackConfidencial"
                 android:layout_width="23dp"
                 android:layout_height="23dp"
                 android:src="@drawable/espalda" />
