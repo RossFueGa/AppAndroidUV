@@ -96,9 +96,10 @@
         <TextView
             android:id="@+id/txt_contrasena_olvidada"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
+            android:textSize="18dp"
             android:textColor="@color/txtClaro"
             android:layout_marginBottom="45dp"
             android:text="¿Olvidaste tu contraseña?" />

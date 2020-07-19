@@ -29,7 +29,7 @@ import java.util.*
 class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListener {
 
 
-    val codesRange : IntRange = 1666..333
+    val codesRange : IntRange = 123..2630
 
     var gson = GsonBuilder()
         .setLenient()
@@ -100,12 +100,12 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
         if(myYear == year && myMonth == month && (myDay >= day && myDay <= day+3 ) ){
             isValid = true
-            Toast.makeText(this@FormularioApartado, "Logrado", Toast.LENGTH_SHORT).show()
+
         }else{
             txtDiaApartado.setError("Fecha no válida!")
         }
 
-        myDates.forEach(::println)
+
 
 
         return  isValid;
@@ -194,7 +194,7 @@ class FormularioApartado : AppCompatActivity(),AdapterView.OnItemSelectedListene
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     if(response.isSuccessful){
-                        Toast.makeText(this@FormularioApartado, "Actualizado bb", Toast.LENGTH_SHORT).show()
+
                     }
                 }
 

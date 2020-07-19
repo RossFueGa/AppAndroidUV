@@ -52,7 +52,7 @@ class RegistroAcademico : AppCompatActivity() {
     fun insertOne(){
         val usuarioId = 1
         var user = Usuario()
-        user.matricula = txtMatriculaAcademico.text.toString()
+        user.matricula = txtMatriculaAcademico.text.toString().toUpperCase()
         user.idTipoUsuario = usuarioId
         user.idCarrera = 0
         user.nombre = txtNombreAcademico.text.toString()

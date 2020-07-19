@@ -1,5 +1,6 @@
 package com.example.mykeepapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -29,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * A simple [Fragment] subclass.
  */
-class FragmentSinMensajes : Fragment() {
+class FragmentDevolverEquipo : Fragment() {
 
     var gson = GsonBuilder()
         .setLenient()
@@ -63,6 +64,10 @@ class FragmentSinMensajes : Fragment() {
                     prefs.getInt("idTipoEquipo",-9999),
                     prefs.getString("serialEquipo", "noValueSerialEquipo").toString(),
                     1)
+
+                goOut();
+
+
             }else{
                 txtCodeBack.setError("Código no válido!")
             }
@@ -74,6 +79,14 @@ class FragmentSinMensajes : Fragment() {
 
         // Inflate the layout for this fragment
         return vista
+    }
+
+
+    fun goOut(){
+        val intent = Intent(activity, Login::class.java)
+        Toast.makeText(activity, "Cuídate mucho!", Toast.LENGTH_SHORT).show()
+        startActivity(intent)
+        activity?.finish()
     }
 
     fun updateStatusDevice(idEquipo:Int, idTipoEquipo : Int, serial : String, status: Int){

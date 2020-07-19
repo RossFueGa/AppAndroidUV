@@ -10,10 +10,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        >
-
-                <activity android:name=".ui.Bienvenida">
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.RecuperarPassword"></activity>
+        <activity android:name=".ui.Bienvenida">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +30,6 @@
         <activity android:name=".ui.TiposProyectores" />
         <activity android:name=".ui.SinDisponibilidad" />
         <activity android:name=".ui.AcuerdoConfidencialidad" />
-
     </application>
 
 </manifest>

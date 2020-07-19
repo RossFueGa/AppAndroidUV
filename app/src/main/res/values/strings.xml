@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Keep</string>
+    <string name="app_name">My keep</string>
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_profile">Profile</string>
@@ -32,7 +32,7 @@
     reservar equipo audiovisual exclusivo de la Universidad Veracruzana facultad de Negocios y Tecnologías campus Ixtaczoquitlán</string>
     <string name="txt_matricula">Se reserva el derecho de préstamos únicamente a personal académico y alumnado de la facultad de
     negocios y tecnologías campus Ixtaczoquitlán</string>
-    
+
     <string name="inf_revelada">Información que compartimos y revelamos</string>
     <string name="inf_revelada_uno">My Keep está diseñado para poder compartir información que necesita el proceso de apartado de equipo en el área Audiovisual.
     En situación limitada en la que se revelan sus datos personales privados, se hace bajo su control, porque es necesario para administrar un proceso interno de la

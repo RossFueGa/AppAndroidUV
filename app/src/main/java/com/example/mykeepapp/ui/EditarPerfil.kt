@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.preference.PreferenceManager
 import com.example.mykeepapp.R
 import com.example.mykeepapp.data.data.Api.ApiService
@@ -20,6 +21,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class EditarPerfil : AppCompatActivity() {
 
@@ -37,6 +39,7 @@ class EditarPerfil : AppCompatActivity() {
 
     var retrofitobj = retrofit.create(ApiService::class.java)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_perfil)
@@ -51,17 +54,27 @@ class EditarPerfil : AppCompatActivity() {
 
         if(tipoUsuario == 1){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                txtEditGrupo.focusable = View.NOT_FOCUSABLE
-                txtEditGrupo.setText("")
+                txtEditGrupo.visibility = View.INVISIBLE
             }
+        }
+
+        if(tipoUsuario == 2 && isDateToUpdateGroup()){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                txtEditGrupo.focusable = View.FOCUSABLE
+            }
+        }else{
+            txtEditGrupo.focusable = View.NOT_FOCUSABLE
+            txtEditGrupo.setText(prefs.getString("grupo", "noValueForGroup").toString())
         }
 
 
 
 
+
+
+
         btnUpdateUser.setOnClickListener {
-            if(checkGroup(txtEditGrupo.text.toString())
-                && checkName(txtEditNombre.text.toString())
+            if( checkName(txtEditNombre.text.toString())
                 && checkLastName1(txtEditApellidoPaterno.text.toString())
                 && checkLastName2(txtApellidoMaterno.text.toString())){
 
@@ -87,8 +100,11 @@ class EditarPerfil : AppCompatActivity() {
         user.nombre = txtEditNombre.text.toString()
         user.apellidoPaterno = txtEditApellidoPaterno.text.toString()
         user.apellidoMaterno = txtApellidoMaterno.text.toString()
-        user.grupo = txtEditGrupo.text.toString()
         user.contrasena = prefs.getString("rawPassword", "NoPasswordValue").toString()
+        user.grupo = txtEditGrupo.text.toString()
+
+
+
 
         retrofitobj.updateUsuario(user).enqueue(
             object : Callback<String>{
@@ -98,8 +114,10 @@ class EditarPerfil : AppCompatActivity() {
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     if(response.isSuccessful){
-                        Log.d("RESPONSE", response.body())
-                        Toast.makeText(this@EditarPerfil, "Información actualizada", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@EditarPerfil, "Éxito, vuelve a iniciar sesión para ver los cambios", Toast.LENGTH_SHORT).show()
+                        val editor  = prefs.edit()
+                        editor.putString("grupo", user.grupo)
+                        editor.apply()
 
                     }
                 }
@@ -107,6 +125,21 @@ class EditarPerfil : AppCompatActivity() {
             }
         )
 
+
+    }
+
+    fun isDateToUpdateGroup() : Boolean{
+        var isValid = false
+        //Actual date from calendar
+        val c = Calendar.getInstance()
+        val month = c.get(Calendar.MONTH) + 1
+
+        when(month){
+            2 -> isValid = true
+            9 -> isValid = true
+        }
+
+        return isValid;
 
     }
 
@@ -158,7 +191,13 @@ class EditarPerfil : AppCompatActivity() {
                         || myChar.get(pos) == '>' || myChar.get(pos) == '<' || myChar.get(pos) == '-'
                         || myChar.get(pos) == '_' || myChar.get(pos) == '/' || myChar.get(pos) == '*'
                         || myChar.get(pos) == '+' || myChar.get(pos) == '?' || myChar.get(pos) == '¿'
-                        || myChar.get(pos) == '!' || myChar.get(pos) == '¡'){
+                        || myChar.get(pos) == '!' || myChar.get(pos) == '¡' || myChar.get(pos) == '1'
+                        || myChar.get(pos) == '2' || myChar.get(pos) == '3' || myChar.get(pos) == '4'
+                        || myChar.get(pos) == '5' || myChar.get(pos) == '6' || myChar.get(pos) == '7'
+                        || myChar.get(pos) == '8' || myChar.get(pos) == '9' || myChar.get(pos) == '0'
+                        || myChar.get(pos) == '$' || myChar.get(pos) == '#' || myChar.get(pos) == '('
+                        || myChar.get(pos) == ')' || myChar.get(pos) == '=' || myChar.get(pos) == '|'
+                        || myChar.get(pos) == '°' || myChar.get(pos) == '.'){
                         isValid = false;
                         break
                     }
@@ -193,7 +232,13 @@ class EditarPerfil : AppCompatActivity() {
                         || myChar.get(pos) == '>' || myChar.get(pos) == '<' || myChar.get(pos) == '-'
                         || myChar.get(pos) == '_' || myChar.get(pos) == '/' || myChar.get(pos) == '*'
                         || myChar.get(pos) == '+' || myChar.get(pos) == '?' || myChar.get(pos) == '¿'
-                        || myChar.get(pos) == '!' || myChar.get(pos) == '¡'){
+                        || myChar.get(pos) == '!' || myChar.get(pos) == '¡' || myChar.get(pos) == '1'
+                        || myChar.get(pos) == '2' || myChar.get(pos) == '3' || myChar.get(pos) == '4'
+                        || myChar.get(pos) == '5' || myChar.get(pos) == '6' || myChar.get(pos) == '7'
+                        || myChar.get(pos) == '8' || myChar.get(pos) == '9' || myChar.get(pos) == '0'
+                        || myChar.get(pos) == '$' || myChar.get(pos) == '#' || myChar.get(pos) == '('
+                        || myChar.get(pos) == ')' || myChar.get(pos) == '=' || myChar.get(pos) == '|'
+                        || myChar.get(pos) == '°' || myChar.get(pos) == '.'){
                         isValid = false;
                         break
                     }
@@ -228,7 +273,13 @@ class EditarPerfil : AppCompatActivity() {
                         || myChar.get(pos) == '>' || myChar.get(pos) == '<' || myChar.get(pos) == '-'
                         || myChar.get(pos) == '_' || myChar.get(pos) == '/' || myChar.get(pos) == '*'
                         || myChar.get(pos) == '+' || myChar.get(pos) == '?' || myChar.get(pos) == '¿'
-                        || myChar.get(pos) == '!' || myChar.get(pos) == '¡'){
+                        || myChar.get(pos) == '!' || myChar.get(pos) == '¡' || myChar.get(pos) == '1'
+                        || myChar.get(pos) == '2' || myChar.get(pos) == '3' || myChar.get(pos) == '4'
+                        || myChar.get(pos) == '5' || myChar.get(pos) == '6' || myChar.get(pos) == '7'
+                        || myChar.get(pos) == '8' || myChar.get(pos) == '9' || myChar.get(pos) == '0'
+                        || myChar.get(pos) == '$' || myChar.get(pos) == '#' || myChar.get(pos) == '('
+                        || myChar.get(pos) == ')' || myChar.get(pos) == '=' || myChar.get(pos) == '|'
+                        || myChar.get(pos) == '°' || myChar.get(pos) == '.'){
                         isValid = false;
                         break
                     }

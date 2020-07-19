@@ -3,6 +3,7 @@ package com.example.mykeepapp.ui
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import com.example.mykeepapp.R
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_navigation_buttoms.*
@@ -10,16 +11,19 @@ import kotlinx.android.synthetic.main.activity_navigation_buttoms.*
 
 class NavigationButtoms : AppCompatActivity() {
 
+
+
     private val adapter by lazy { ViewAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_buttoms)
 
-        val saludo = intent.getStringExtra("saludo")
 
 
         pager.adapter = adapter
+
+
 
         val tabLayoutMediator = TabLayoutMediator(tab_layout, pager,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
@@ -29,7 +33,7 @@ class NavigationButtoms : AppCompatActivity() {
                     }
                     1 -> {
                         tab.setIcon(R.drawable.ic_attachment_black_24dp)
-                        Toast.makeText(this, saludo, Toast.LENGTH_SHORT).show()
+                     //   (pager.adapter as ViewAdapter).notifyDataSetChanged()
                     }
                     2 -> {
                         tab.setIcon(R.drawable.ic_message_black_24dp)

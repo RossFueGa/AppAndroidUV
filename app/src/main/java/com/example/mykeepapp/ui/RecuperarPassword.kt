@@ -1,6 +1,6 @@
 package com.example.mykeepapp.ui
 
-import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,12 +8,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.mykeepapp.R
-import com.example.mykeepapp.ui.models.Usuario
 import com.example.mykeepapp.data.data.Api.ApiService
+import com.example.mykeepapp.ui.models.Usuario
 import com.google.gson.GsonBuilder
-import kotlinx.android.synthetic.main.activity_registro_alumno.*
+import kotlinx.android.synthetic.main.activity_recuperar_password.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +21,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class RecuperarPassword : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     var gson = GsonBuilder()
         .setLenient()
@@ -37,41 +36,28 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     var retrofitobj = retrofit.create(ApiService::class.java)
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registro_alumno)
+        setContentView(R.layout.activity_recuperar_password)
 
         loadSpinner()
 
-        btnAceptarRegistro.setOnClickListener {
+        btnRecuperarPass.setOnClickListener {
             if(checkName(txtNombreAlumno.text.toString())
                 && checkLastName1(txtApellidoPaternoAlumno.text.toString())
                 && checkLastName2(txtApellidoMaternoAlumno.text.toString())
                 && checkMatricula(txtMatriculaAlumno.text.toString())
                 && checkPassword(passAlumno.text.toString())
                 && checkGrupo(txtGrupoAlumno.text.toString())){
-
-                insertOne()
-
-            }else{
-                Toast.makeText(this, "Error verifica tus datos", Toast.LENGTH_SHORT).show()
+                updateUser()
             }
-
-
-
         }
+
+
     }
 
-    fun checkGrupo(grupo:String):Boolean{
-        var isValid = false
-        if(grupo.length == 3){
-            isValid = true;
-        }
-        return isValid;
-    }
 
-    fun insertOne(){
+    fun updateUser(){
         val usuarioId = 2
         var user = Usuario()
         user.matricula = txtMatriculaAlumno.text.toString().toUpperCase()
@@ -83,27 +69,32 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         user.contrasena = passAlumno.text.toString()
         user.grupo = txtGrupoAlumno.text.toString()
 
-        retrofitobj.insertUsuario(user).enqueue(
-            object : Callback<String>{
+        retrofitobj.updateUsuario(user).enqueue(
+            object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(this@RegistroAlumno, "ERROR", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@RecuperarPassword, "ERROR", Toast.LENGTH_LONG).show()
                     Log.d("ERROR", t.message)
                 }
 
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     if(response.isSuccessful){
-                        Toast.makeText(this@RegistroAlumno, "Registrado con éxito", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@RecuperarPassword, "Contraseña recuperada con éxito", Toast.LENGTH_LONG).show()
 
-                        val intent = Intent(this@RegistroAlumno, Login::class.java)
-                        startActivity(intent)
-                        finish()
                     }
                 }
+
             }
         )
 
 
+    }
 
+    fun checkGrupo(grupo:String):Boolean{
+        var isValid = false
+        if(grupo.length == 3){
+            isValid = true;
+        }
+        return isValid;
     }
 
     fun  checkMatricula (matricula : String) : Boolean {
@@ -118,9 +109,9 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         if (myChar.get(pos)== ' '){
                             flag = false;
                         }else if (myChar.get(pos) == '0' || myChar.get(pos) == '1' || myChar.get(pos) == '2' || myChar.get(pos) == '3'
-                                    || myChar.get(pos) == '4' || myChar.get(pos) == '5' || myChar.get(pos) == '6' || myChar.get(pos) == '7'
-                                    || myChar.get(pos) == '8' || myChar.get(pos) == '9'){
-                                    numeros ++;
+                            || myChar.get(pos) == '4' || myChar.get(pos) == '5' || myChar.get(pos) == '6' || myChar.get(pos) == '7'
+                            || myChar.get(pos) == '8' || myChar.get(pos) == '9'){
+                            numeros ++;
                         }
                     }
 
@@ -178,32 +169,32 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var testName = nombre.trimEnd()
 
         if(testName.isNotEmpty()){
-               if(testName.length >= 3){
-                   var myChar = testName.toCharArray()
-                   for(pos in myChar.indices){
-                       if(myChar.get(pos) == ' ' && myChar.get(pos +1) == ' '){
-                           isValid = false;
-                           break
-                       }else if(myChar.get(pos) == '.' || myChar.get(pos) == ':' || myChar.get(pos) == '@'
-                           || myChar.get(pos) == '>' || myChar.get(pos) == '<' || myChar.get(pos) == '-'
-                           || myChar.get(pos) == '_' || myChar.get(pos) == '/' || myChar.get(pos) == '*'
-                           || myChar.get(pos) == '+' || myChar.get(pos) == '?' || myChar.get(pos) == '¿'
-                           || myChar.get(pos) == '!' || myChar.get(pos) == '¡' || myChar.get(pos) == '1'
-                           || myChar.get(pos) == '2' || myChar.get(pos) == '3' || myChar.get(pos) == '4'
-                           || myChar.get(pos) == '5' || myChar.get(pos) == '6' || myChar.get(pos) == '7'
-                           || myChar.get(pos) == '8' || myChar.get(pos) == '9' || myChar.get(pos) == '0'
-                           || myChar.get(pos) == '$' || myChar.get(pos) == '#' || myChar.get(pos) == '('
-                           || myChar.get(pos) == ')' || myChar.get(pos) == '=' || myChar.get(pos) == '|'
-                           || myChar.get(pos) == '°' || myChar.get(pos) == '.'){
-                            isValid = false;
-                            break
-                       }
-                   }
-               }else {
-                   isValid = false;
-               }
+            if(testName.length >= 3){
+                var myChar = testName.toCharArray()
+                for(pos in myChar.indices){
+                    if(myChar.get(pos) == ' ' && myChar.get(pos +1) == ' '){
+                        isValid = false;
+                        break
+                    }else if(myChar.get(pos) == '.' || myChar.get(pos) == ':' || myChar.get(pos) == '@'
+                        || myChar.get(pos) == '>' || myChar.get(pos) == '<' || myChar.get(pos) == '-'
+                        || myChar.get(pos) == '_' || myChar.get(pos) == '/' || myChar.get(pos) == '*'
+                        || myChar.get(pos) == '+' || myChar.get(pos) == '?' || myChar.get(pos) == '¿'
+                        || myChar.get(pos) == '!' || myChar.get(pos) == '¡' || myChar.get(pos) == '1'
+                        || myChar.get(pos) == '2' || myChar.get(pos) == '3' || myChar.get(pos) == '4'
+                        || myChar.get(pos) == '5' || myChar.get(pos) == '6' || myChar.get(pos) == '7'
+                        || myChar.get(pos) == '8' || myChar.get(pos) == '9' || myChar.get(pos) == '0'
+                        || myChar.get(pos) == '$' || myChar.get(pos) == '#' || myChar.get(pos) == '('
+                        || myChar.get(pos) == ')' || myChar.get(pos) == '=' || myChar.get(pos) == '|'
+                        || myChar.get(pos) == '°' || myChar.get(pos) == '.'){
+                        isValid = false;
+                        break
+                    }
+                }
+            }else {
+                isValid = false;
+            }
         }else{
-           isValid = false
+            isValid = false
         }
 
         if(isValid == false){
@@ -303,29 +294,29 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     fun loadSpinner(){
         val spinnerCarrera : Spinner = findViewById(R.id.spinnerCarrera)
-          ArrayAdapter.createFromResource(
-              this,
-              R.array.carreras_array,
-              android.R.layout.simple_spinner_item
-          ).also{adapter ->
-              adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-              // Apply the adapter to the spinner
-              spinnerCarrera.adapter = adapter
-          }
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.carreras_array,
+            android.R.layout.simple_spinner_item
+        ).also{adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerCarrera.adapter = adapter
+        }
 
 
-          val spinnerAula: Spinner = findViewById(R.id.spinnerAulaAlumno)
-          // Create an ArrayAdapter using the string array and a default spinner layout
-          ArrayAdapter.createFromResource(
-              this,
-              R.array.aulas_array,
-              android.R.layout.simple_spinner_item
-          ).also { adapter ->
-              // Specify the layout to use when the list of choices appears
-              adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-              // Apply the adapter to the spinner
-              spinnerAula.adapter = adapter
-          }
+        val spinnerAula: Spinner = findViewById(R.id.spinnerAulaAlumno)
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.aulas_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerAula.adapter = adapter
+        }
 
         val spinnerEdificio: Spinner = findViewById(R.id.spinnerEdificioAlumno)
         ArrayAdapter.createFromResource(
@@ -353,7 +344,4 @@ class RegistroAlumno : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val spinnerEdificio: Spinner = findViewById(R.id.spinnerEdificioAlumno)
         spinnerEdificio.onItemSelectedListener = this
     }
-
-
-
 }

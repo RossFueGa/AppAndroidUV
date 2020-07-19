@@ -32,5 +32,9 @@ class TiposProyectores : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btnRegresarTipoProyector.setOnClickListener {
+            finish()
+        }
+
     }
 }

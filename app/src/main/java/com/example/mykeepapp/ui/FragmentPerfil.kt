@@ -43,7 +43,9 @@ class FragmentPerfil : Fragment() {
         myTxtTipoUsuario.text = getStatus(tipoUsuario)
 
         btnCerrarSesion.setOnClickListener {
+            val intent = Intent(activity, Login::class.java)
             Toast.makeText(activity, "Cuídate mucho!", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
             activity?.finish()
         }
 

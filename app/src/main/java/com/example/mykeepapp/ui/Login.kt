@@ -3,7 +3,6 @@ package com.example.mykeepapp.ui
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -27,15 +26,17 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         val prefs  = PreferenceManager.getDefaultSharedPreferences(this)
 
-        txtMatriculaAlumnoLogin.setText("S17004079")
-        passAlumnoLogin.setText("sopita12")
+        txt_contrasena_olvidada.setOnClickListener {
+            val intent = Intent(this, RecuperarPassword::class.java)
+            startActivity(intent)
+        }
 
 
 
        aceptar_login.setOnClickListener {
            Log.d("Pass" ,encryptPassword(passAlumnoLogin.text.toString()))
 
-            if (checkMatricula(txtMatriculaAlumnoLogin.text.toString())
+            if (checkMatricula(txtMatriculaAlumnoLogin.text.toString().toUpperCase())
                     && checkPassword(passAlumnoLogin.text.toString()) &&
                     setUpModel(
                     txtMatriculaAlumnoLogin.text.toString().toUpperCase(),
@@ -53,8 +54,6 @@ class Login : AppCompatActivity() {
                 editor.putString("rawPassword", passAlumnoLogin.text.toString())
 
                 editor.apply()
-
-                Toast.makeText(this, "Password ${prefs.getString("rawPassword", "NoPasswordValue")}", Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this, NavigationButtoms::class.java)
                 intent.putExtra("saludo", user.matricula)
