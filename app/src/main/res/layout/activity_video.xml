@@ -1,0 +1,61 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:videoId="f7ZEbq1z3n4"
+        app:autoPlay="true"
+        app:enableLiveVideoUi="true"
+        app:showFullScreenButton="true" />
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Video introductorio a MyKeep"
+            android:textSize="18dp"
+            android:textColor="@color/txtVerde"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Recomendamos reproducirlo en pantalla completa"
+            android:textSize="14dp"
+            android:textColor="@color/txtClaro"
+            />
+
+        <TextView
+            android:layout_marginTop="340dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Desarrollado en Kotlin y con amor."
+            android:textSize="15dp"
+            android:textColor="@color/txtAzul"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Atte: Equipo MyKeep"
+            android:textSize="15dp"
+            android:textColor="@color/txtAzul"
+            android:drawableBottom="@drawable/corazon"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -26,6 +26,8 @@ class FragmentPerfil : Fragment() {
 
         var myTxtNombreUsuario = vista.findViewById<TextView>(R.id.txtNombrePerfil)
         var myTxtTipoUsuario = vista.findViewById<TextView>(R.id.txtTipoUsuarioPerfil)
+        var btnObtenerMyAyuda = vista.findViewById<LinearLayout>(R.id.txtObtenerAyuda)
+
 
         var btnCerrarSesion = vista.findViewById<LinearLayout>(R.id.cerrarSesionPerfil)
         var btnAcuerdoConfidencialidad = vista.findViewById<LinearLayout>(R.id.btnAcuerdoConfidencialidad)
@@ -41,6 +43,11 @@ class FragmentPerfil : Fragment() {
 
         myTxtNombreUsuario.text = nombreUsuario + " " + apellidosUsuario
         myTxtTipoUsuario.text = getStatus(tipoUsuario)
+
+        btnObtenerMyAyuda.setOnClickListener {
+            val intent = Intent(activity, VideoActivity::class.java)
+            startActivity(intent)
+        }
 
         btnCerrarSesion.setOnClickListener {
             val intent = Intent(activity, Login::class.java)

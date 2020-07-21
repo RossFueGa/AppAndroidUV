@@ -65,7 +65,7 @@ class FragmentDevolverEquipo : Fragment() {
                     prefs.getString("serialEquipo", "noValueSerialEquipo").toString(),
                     1)
 
-                goOut();
+
 
 
             }else{

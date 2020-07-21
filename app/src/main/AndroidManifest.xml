@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.RecuperarPassword"></activity>
+        <activity android:name=".ui.VideoActivity"></activity>
+        <activity android:name=".ui.RecuperarPassword" />
         <activity android:name=".ui.Bienvenida">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
